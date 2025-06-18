@@ -2,10 +2,13 @@ import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
 
-const STRIPE_SECRET_KEY= process.env.STRIPE_SECRET_KEY
+if (!STRIPE_SECRET_KEY) {
+  throw new Error("STRIPE_SECRET_KEY is not defined in environment variables.");
+}
 
-const stripe = new Stripe(STRIPE_SECRET_KEY as string, {
+const stripe = new Stripe(STRIPE_SECRET_KEY, {
   apiVersion: "2025-02-24.acacia",
 });
 
@@ -13,11 +16,16 @@ export async function POST(req: Request) {
   try {
     const { items } = await req.json();
 
-    const line_items = items.map((item: { name: string; price: number; quantity: number ,currency: string}) => ({
+    const line_items = items.map((item: {
+      name: string;
+      price: number;
+      quantity: number;
+      currency: string;
+    }) => ({
       price_data: {
-        currency:item.currency,
+        currency: item.currency,
         product_data: { name: item.name },
-        unit_amount: item.price * 100, // Convert to cents
+        unit_amount: item.price * 100, // cents
       },
       quantity: item.quantity,
     }));
@@ -30,9 +38,12 @@ export async function POST(req: Request) {
       cancel_url: `${BASE_URL}/cancel`,
     });
 
-
     return NextResponse.json({ sessionId: session.id });
   } catch (error) {
-    return NextResponse.json({ error: error instanceof Error ? error.message : "Something went wrong" }, { status: 500 });
+    console.error("Stripe Checkout Error:", error);
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : "Something went wrong" },
+      { status: 500 }
+    );
   }
 }
