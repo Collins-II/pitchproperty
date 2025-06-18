@@ -2,13 +2,14 @@ import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
 const BASE_URL = process.env.NEXT_BASE_URL || "http://localhost:3000";
-const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
+const SECRET_KEY = process.env.STRIPE_SECRET_KEY;
+console.log("STRipwe",SECRET_KEY)
 
-if (!STRIPE_SECRET_KEY) {
+if (!SECRET_KEY) {
   throw new Error("STRIPE_SECRET_KEY is not defined in environment variables.");
 }
 
-const stripe = new Stripe(STRIPE_SECRET_KEY, {
+const stripe = new Stripe(SECRET_KEY, {
   apiVersion: "2025-02-24.acacia",
 });
 
