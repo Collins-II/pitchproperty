@@ -3,7 +3,7 @@ import Stripe from "stripe";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 
-const STRIPE_SECRET_KEY= process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY
+const STRIPE_SECRET_KEY= process.env.STRIPE_SECRET_KEY
 
 const stripe = new Stripe(STRIPE_SECRET_KEY as string, {
   apiVersion: "2025-02-24.acacia",
