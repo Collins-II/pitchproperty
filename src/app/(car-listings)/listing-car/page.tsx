@@ -22,16 +22,27 @@ import BackgroundSection from "@/components/BackgroundSection";
 import SectionGridAuthorBox from "@/components/SectionGridAuthorBox";
 import { getCarPremium } from "@/app/actions/getCarPremiums";
 import SectionSliderNewCategories from "@/components/SectionSliderNewCategories";
+import SectionHeroArchivePage from "@/app/(server-components)/SectionHeroArchivePage";
 
 export interface ListingCarPageProps {}
 
 const ListingCarPage: FC<ListingCarPageProps> = async () => {
   const data = await getCarPremium();
-  console.log("CARDdata", data);
 
   return (
-    <div className="container ">
-      
+    <div className="container pt-10 pb-24 lg:pt-16 lg:pb-28">
+        <SectionHeroArchivePage
+          //rightImage={heroRightImage}
+          currentPage="Sale"
+          currentTab="Sale"
+          /*listingType={
+            <>
+              <i className="text-2xl las la-car"></i>
+              <span className="ml-2.5">1512 cars</span>
+            </>
+          }*/
+        />
+     
       {/*<SectionGridFilterCard className="pb-24 lg:pb-28" /> */}
        <SectionSliderNewCategories
           heading="Explore by types of stays"

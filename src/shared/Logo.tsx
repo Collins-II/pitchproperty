@@ -15,7 +15,7 @@ export interface LogoProps {
 const Logo: React.FC<LogoProps> = ({
   img = logoImg,
   imgLight = logoLightImg,
-  className = "w-24",
+  className,
 }) => {
   return (
     <Link
@@ -29,7 +29,7 @@ const Logo: React.FC<LogoProps> = ({
       {/* PLEASE UN COMMENT BELLOW CODE AND USE IT */}
       {img ? (
         <img
-          className={`block max-h-18 rounded-full shadow-lg shadow-neutral-300 object-cover ${imgLight ? "dark:hidden" : ""}`}
+          className={`block max-h-14 rounded-full shadow-lg shadow-neutral-300 object-cover ${imgLight ? "dark:hidden" : ""}`}
           src="/images/logo1.png"
           alt="Logo"
         />
@@ -38,7 +38,7 @@ const Logo: React.FC<LogoProps> = ({
       )}
       {imgLight && (
         <img
-          className="rounded-full shadow-lg shadow-neutral-300 object-cover hidden max-h-18 dark:block"
+          className="rounded-full shadow-lg shadow-neutral-300 object-cover hidden max-h-14 dark:block"
           src="/images/logo1.png"
           alt="Logo-Light"
         />

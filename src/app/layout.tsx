@@ -110,8 +110,8 @@ export default function RootLayout({
         {/* Google Translate Element */}
         <div id="google_translate_element" className="absolute bottom-5 right-5"></div>
 
-        {/* Providers */}
-        <PageConnectionError />
+        {/* Providers 
+        <PageConnectionError />*/}
         <NextTopLoader showSpinner={false} />
         <SessionProvider session={session as never}>
         <ReduxProvider>

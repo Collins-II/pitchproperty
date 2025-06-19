@@ -2,6 +2,8 @@
 import React from "react";
 import Image, { StaticImageData } from "next/image";
 import { motion } from "motion/react";
+import Link from "next/link";
+import { Route } from "next";
 
 interface CTAProps {
   title: string;
@@ -33,7 +35,7 @@ const CTA: React.FC<CTAProps> = ({ title, subtitle, imageSrc, imageAlt, buttonLi
               <h2 className="mb-4 w-11/12 text-3xl font-bold text-silverGray xl:text-sectiontitle4">
                 {title}
               </h2>
-              <p className="text-lightGray">
+              <p className="text-lightGray hidden lg:block">
                 {subtitle}
               </p>
             </motion.div>
@@ -48,19 +50,19 @@ const CTA: React.FC<CTAProps> = ({ title, subtitle, imageSrc, imageAlt, buttonLi
               viewport={{ once: true }}
               className="animate_right lg:w-[45%]"
             >
-              <div className="flex items-center justify-end xl:justify-between">
+              <div className="flex items-center flex-col md:flex-row justify-end xl:justify-between">
                 <Image
                   width={299}
                   height={299}
                   src={imageSrc}
                   alt="Kingsland City Estates"
-                  className="hidden xl:block"
+                  className=""
                 />
-                <a
-                  href="/contact"
-                  className="inline-flex items-center gap-2.5 rounded-full bg-gold px-4 py-3 font-medium text-white hover:opacity-90 "
+                <Link
+                  href={buttonLink as Route}
+                  className="w-auto inline-flex items-center gap-2.5 rounded-full bg-slate-900 px-4 py-3 font-medium text-white hover:opacity-90 "
                 >
-                  Get in Touch
+                  {buttonText as string}
                   <Image
                     width={20}
                     height={20}
@@ -76,7 +78,7 @@ const CTA: React.FC<CTAProps> = ({ title, subtitle, imageSrc, imageAlt, buttonLi
                     className="block"
                   />
                   */}
-                </a>
+                </Link>
               </div>
             </motion.div>
           </div>

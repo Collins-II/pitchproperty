@@ -33,7 +33,7 @@ const NewsLatterBox = () => {
       />
        {/* Submit Button */}
        <div className="mt-6">
-          <button aria-label="submit-button" className="w-full flex justify-center rounded-full shadow-sm bg-red-500 px-6 py-3 text-lg font-bold text-white hover:text-gold shadow-lg transition duration-300 hover:bg-white focus:outline-none focus:ring-2 focus:ring-primary-400">
+          <button aria-label="submit-button" className="w-full flex justify-center rounded-full shadow-sm bg-blue-500 px-6 py-3 text-lg font-bold text-white hover:text-gold shadow-lg transition duration-300 hover:bg-white focus:outline-none focus:ring-2 focus:ring-primary-400">
             <ArrowRightIcon className="w-5 h-5" />
           </button>
         </div>

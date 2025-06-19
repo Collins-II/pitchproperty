@@ -68,7 +68,7 @@ const FeaturesTabItem = ({
               {title}
             </h2>
             <div className="flex flex-wrap items-center justify-between mt-2">
-              <h3 className="text-xl font-bold text-red-500">
+              <h3 className="text-xl font-bold text-neutral-500">
                 {selectedCurrency} {formatNumberWithCommas(convertPrice(price))}
                 <span className="text-lg font-medium text-body-color">
                   /{duration}
@@ -103,7 +103,7 @@ const FeaturesTabItem = ({
               {features.slice(0, 3).map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center space-x-2 hover:text-gold transition"
+                  className="flex items-center space-x-2 hover:text-slate-700 transition"
                 >
                   <i className="las la-check-circle text-2xl text-silverGray"></i>
                   <span>{item}</span>
@@ -117,7 +117,7 @@ const FeaturesTabItem = ({
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-full flex items-center justify-center rounded-full bg-red-500 p-3 text-base font-semibold text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-xl"
+              className="w-full flex items-center justify-center rounded-full bg-blue-700 p-3 text-base font-semibold text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-xl"
             >
               Start Reservation
             </motion.button>

@@ -49,7 +49,7 @@ const HeroFilter = () => {
   };
 
   return (
-    <div className="w-full flex flex-col gap-6 p-6 bg-gray-100 dark:bg-gray-800 rounded-xl shadow-md">
+    <div className="w-full flex flex-col gap-6 lg:p-6 bg-gray-100 dark:bg-gray-800 rounded-xl shadow-md">
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         {Object.entries(filterOptions).map(([key, options]) => (
           <FilterSelect

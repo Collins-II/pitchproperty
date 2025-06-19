@@ -55,7 +55,7 @@ const FeaturesTab: React.FC<FeaturesTabProps> = ({ data, className }) => {
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold text-silverGray">Sponsored Offers</h2>
+           {/* <h2 className="text-2xl font-semibold text-silverGray">Sponsored Offers</h2> */}
             <span className="block mt-2 text-neutral-500 dark:text-neutral-400">
               Best offers by our clients.
             </span>

@@ -17,7 +17,7 @@ export interface SectionGridAuthorBoxProps {
 const DEMO_DATA = DEMO_AUTHORS.filter((_, i) => i < 10);
 
 const SectionGridAuthorBox: FC<SectionGridAuthorBoxProps> = ({
-  className = "",
+  className = "hidden md:block",
   authors = DEMO_DATA,
   boxCard = "box1",
   gridClassName = "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 ",

@@ -148,10 +148,10 @@ const onSign = useCallback(() => {
           `}
         ></div>
         <div className="relative px-4 h-[88px] flex">
-          <div className="flex-1 flex justify-between">
+          <div className="flex-1 flex items-center justify-between">
             {/* Logo (lg+) */}
           <div className="flex justify-start flex-1 space-x-3 sm:space-x-8 lg:space-x-10">
-          <Logo className="w-24 self-center ml-0 md:ml-10" img="/YouSell_Logo.png" />
+          <Logo className="w-16 self-center ml-0 md:ml-10" img="/YouSell_Logo.png" />
           <div className="hidden lg:block self-center h-10 border-l border-neutral-300 dark:border-neutral-500"></div>
           <div className="hidden lg:flex space-x-3 items-center">
             <DropdownTravelers />
@@ -180,7 +180,7 @@ const onSign = useCallback(() => {
                   <CurrencyDropdown />
                 </div>
                 {user ? (<>
-          <div className="hidden md:flex flex-shrink-0 items-center justify-end flex-1 lg:flex-none text-neutral-700 dark:text-neutral-100">
+          <div className=" md:flex flex-shrink-0 items-center justify-end flex-1 lg:flex-none text-neutral-700 dark:text-neutral-100">
           <div className="hidden lg:flex space-x-1">
           <div
                   className="self-center hidden mr-5 md:flex xl:inline-flex rounded-full items-center font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
@@ -190,15 +190,20 @@ const onSign = useCallback(() => {
 
                 <NotifyDropdown />
                 <AvatarDropdown />
-                <div className="flex md:hidden items-center h-full">
+                <div className="flex items-center h-full">
                   <MenuBar />
                 </div>
           </div>
           <div className="flex items-center space-x-2 lg:hidden">
+            <div className="flex items-center space-x-1">
             <NotifyDropdown />
             <AvatarDropdown />
-            <MenuBar />
+            </div>
+            <div className="">
+             <MenuBar />
+            </div>
           </div>
+          
         </div>
         </>) : (
           <div className="max-w-24 max-h-full hidden md:flex flex-shrink-0 justify-end items-center flex-1 lg:flex-none text-neutral-700 dark:text-neutral-100">

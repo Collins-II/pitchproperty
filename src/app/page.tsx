@@ -35,8 +35,15 @@ import ctaEstImg from "@/images/HIW2.png";
 import AuctionTab from "@/components/AuctionTab";
 import { getAllAuctions } from "./actions/getAuctions";
 
+import HIW1img from "@/images/HIW2-1.png";
+import HIW2img from "@/images/HIW2-2.png";
+import HIW3img from "@/images/HIW2-3.png";
+import HIW1imgDark from "@/images/HIW2-1-dark.png";
+import HIW2imgDark from "@/images/HIW2-2-dark.png";
+import HIW3imgDark from "@/images/HIW2-3-dark.png";
+
 async function PageHome() {
-  const auctions = await getAllAuctions();
+  /*const auctions = await getAllAuctions();*/
 
   return (
     <main className="nc-PageHome relative overflow-hidden">
@@ -62,7 +69,36 @@ async function PageHome() {
           title="Find Your Ride, Your Way"
           subtitle="Rent or buy your next car with ease and confidence. Great prices. Trusted dealers."
           imageSrc="/images/hero-car.png"
+          buttonLink="/market-cars"
+          buttonText="Get a Car"
         />
+
+        <SectionHowItWork
+                  data={[
+                    {
+                      id: 1,
+                      img: HIW1img,
+                      imgDark: HIW1imgDark,
+                      title: "Smart search",
+                      desc: "Name the area or type of home you are looking for the search bar. Our app will find you the perfect match.",
+                    },
+                    {
+                      id: 2,
+                      img: HIW2img,
+                      imgDark: HIW2imgDark,
+                      title: "Choose property",
+                      desc: "From the number of options our app will provide, you can select any property that you like to explore.",
+                    },
+                    {
+                      id: 3,
+                      img: HIW3img,
+                      imgDark: HIW3imgDark,
+                      title: "Book you property",
+                      desc: "Find a home or space from our search bar. Enter your specific location, property type and price range.",
+                    },
+                  ]}
+                />
+        
 
         {/* SECTION 1 
         <SectionHowItWork />
@@ -95,15 +131,17 @@ async function PageHome() {
   
         {/*<AboutSectionOne />
 
-        <FunFact />*/}
+        <FunFact />
         {auctions.length > 0 && (
         <AuctionTab data={auctions} />
-        )}
+        )} */}
 
         <CTA
           title="Invest & Secure Your Future"
           subtitle="Your dream home or investment awaits—start building your legacy today."
           imageSrc={ctaEstImg}
+          buttonLink="/market-property"
+          buttonText="Get a Home"
         />
 
         <FeaturesTab data={featuresTabData}/>  

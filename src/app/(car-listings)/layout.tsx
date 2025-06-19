@@ -17,21 +17,6 @@ const Layout = ({ children }: { children: ReactNode }) => {
     <div className={`nc-ListingCarMapPage relative `}>
       <BgGlassmorphism />
 
-      {/* SECTION HERO */}
-      <div className="container pt-10 pb-24 lg:pt-16 lg:pb-28">
-        <SectionHeroArchivePage
-          //rightImage={heroRightImage}
-          currentPage="Sale"
-          currentTab="Sale"
-          /*listingType={
-            <>
-              <i className="text-2xl las la-car"></i>
-              <span className="ml-2.5">1512 cars</span>
-            </>
-          }*/
-        />
-      </div>
-
       {/* SECTION */}
       {children}
 

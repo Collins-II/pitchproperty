@@ -22,13 +22,7 @@ import logo4Dark from "@/images/logos/dark/4.png";
 import logo5 from "@/images/logos/nomal/5.png";
 import logo5Dark from "@/images/logos/dark/5.png";
 //
-import HIW1img from "@/images/HIW2-1.png";
-import HIW2img from "@/images/HIW2-2.png";
-import HIW3img from "@/images/HIW2-3.png";
-import HIW1imgDark from "@/images/HIW2-1-dark.png";
-import HIW2imgDark from "@/images/HIW2-2-dark.png";
-import HIW3imgDark from "@/images/HIW2-3-dark.png";
-import rightImgPng from "@/images/our-features-2.png";
+
 
 import SectionGridFeatureProperty from "../SectionGridFeatureProperty";
 import SectionDowloadApp from "../SectionDowloadApp";
@@ -39,6 +33,7 @@ import SectionAds from "@/app/blog/SectionAds";
 import getPremiumListings from "@/app/actions/getListings";
 import FeaturesTab from "@/components/FeaturesTab";
 import { featuresTabData } from "@/components/FeaturesTab/featuresTabData";
+import AuthorSlider from "@/components/AuthorSlider";
 
 const DEMO_CATS_2: TaxonomyType[] = [
   {
@@ -146,32 +141,7 @@ async function PageHome2() {
         </div>
          */}
 
-        <SectionHowItWork
-          data={[
-            {
-              id: 1,
-              img: HIW1img,
-              imgDark: HIW1imgDark,
-              title: "Smart search",
-              desc: "Name the area or type of home you are looking for the search bar. Our app will find you the perfect match.",
-            },
-            {
-              id: 2,
-              img: HIW2img,
-              imgDark: HIW2imgDark,
-              title: "Choose property",
-              desc: "From the number of options our app will provide, you can select any property that you like to explore.",
-            },
-            {
-              id: 3,
-              img: HIW3img,
-              imgDark: HIW3imgDark,
-              title: "Book you property",
-              desc: "Find a home or space from our search bar. Enter your specific location, property type and price range.",
-            },
-          ]}
-        />
-
+        
         {/* <div className="relative py-16">
           <BackgroundSection />
           <SectionGridFeatureProperty />
@@ -197,6 +167,7 @@ async function PageHome2() {
         <div className="relative py-16">
           <BackgroundSection className="bg-neutral-100 dark:bg-black dark:bg-opacity-20 " />
           <SectionGridAuthorBox boxCard="box2" />
+          <AuthorSlider boxCard="box2" />
         </div>
 
        {/* <SectionSubscribe2 /> */}

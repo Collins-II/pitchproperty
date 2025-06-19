@@ -16,7 +16,7 @@ const UploadButton = () => {
       onClick={handleClick}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      className="flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full shadow-lg transition-all"
+      className="flex items-center gap-3 bg-slate-900 hover:bg-slate-700 text-white font-semibold px-6 py-1.5 rounded-full shadow-lg transition-all"
     >
       <Upload size={20} className="text-white" />
       Upload Listing
