@@ -36,7 +36,7 @@ const FeaturesTabItem = ({
   const convertPrice = useConvertPrice();
 
   return (
-    <div className="listingSection__wrap">
+    <div className="">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -82,7 +82,7 @@ const FeaturesTabItem = ({
           <div>
             <h4 className="font-semibold text-lg">Amenities</h4>
             <div className="border-b border-neutral-200 dark:border-neutral-700 my-3 w-14"></div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-neutral-700 dark:text-neutral-300">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 text-sm text-neutral-700 dark:text-neutral-300">
               {amenitiesIncluded.slice(0, 6).map((item, index) => (
                 <div
                   key={index}

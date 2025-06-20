@@ -27,7 +27,7 @@ const SectionHeroArchivePage: FC<SectionHeroArchivePageProps> = ({
   return (
     <div className={`nc-SectionHeroArchivePage flex flex-col relative ${className}`}>  
       {/* Hero Section */}
-      <div className="flex flex-col lg:flex-row lg:items-center">
+      <div className="flex flex-col-reverse lg:flex-row lg:items-center">
         {/* Left Content */}
         <div className="flex-shrink-0 lg:w-1/2 flex flex-col space-y-6 lg:space-y-10 pb-20 xl:pr-14 lg:mr-10 xl:mr-0">
           <Card className="!max-w-[49rem] w-full bg-transparent">

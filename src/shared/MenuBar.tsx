@@ -5,6 +5,7 @@ import { Dialog, DialogPanel, Transition, TransitionChild } from "@headlessui/re
 import { motion } from "motion/react"
 import NavMobile from "./Navigation/NavMobile";
 import { Bars3Icon } from "@heroicons/react/24/outline";
+import { CgMenuRight } from "react-icons/cg";
 import { usePathname } from "next/navigation";
 
 export interface MenuBarProps {
@@ -74,7 +75,7 @@ const MenuBar: React.FC<MenuBarProps> = ({
         onClick={handleOpenMenu}
         className={`focus:outline-none flex items-center justify-center ${className}`}
       >
-        <Bars3Icon className={iconClassName} />
+        <CgMenuRight className={iconClassName}/>
       </button>
 
       {renderContent()}

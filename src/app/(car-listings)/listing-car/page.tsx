@@ -23,6 +23,7 @@ import SectionGridAuthorBox from "@/components/SectionGridAuthorBox";
 import { getCarPremium } from "@/app/actions/getCarPremiums";
 import SectionSliderNewCategories from "@/components/SectionSliderNewCategories";
 import SectionHeroArchivePage from "@/app/(server-components)/SectionHeroArchivePage";
+import AuthorSlider from "@/components/AuthorSlider";
 
 export interface ListingCarPageProps {}
 
@@ -30,7 +31,7 @@ const ListingCarPage: FC<ListingCarPageProps> = async () => {
   const data = await getCarPremium();
 
   return (
-    <div className="container pt-10 pb-24 lg:pt-16 lg:pb-28">
+    <div className="container space-y-8 mb-8 lg:space-y-12 lg:mb-12">
         <SectionHeroArchivePage
           //rightImage={heroRightImage}
           currentPage="Sale"
@@ -51,7 +52,7 @@ const ListingCarPage: FC<ListingCarPageProps> = async () => {
           itemPerRow={5}
         />
       
-      <div className="relative py-16 mb-24 lg:mb-28">
+      <div className="relative py-16">
        <SectionHowItWork
                 data={[
                   {
@@ -100,9 +101,10 @@ const ListingCarPage: FC<ListingCarPageProps> = async () => {
         <SectionSubscribe2 className="py-24 lg:py-28" /> */}
 
         {/* SECTION  */}
-        <div className="relative py-16 mb-24 lg:mb-28">
+        <div className="relative py-16">
           <BackgroundSection className="bg-orange-50 dark:bg-black dark:bg-opacity-20 " />
-          <SectionGridAuthorBox />
+          <SectionGridAuthorBox boxCard="box2" />
+          <AuthorSlider boxCard="box2" />
         </div>
        
     </div>

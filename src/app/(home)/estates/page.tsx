@@ -106,7 +106,7 @@ async function PageHome2() {
 
   return (
     <main className="nc-PageHome2 relative overflow-hidden">
-      <div className="container relative space-y-24 mb-24 lg:space-y-28 lg:mb-28">
+      <div className="container relative space-y-8 mb-8 lg:space-y-12 lg:mb-12">
         <SectionHero2 className="" />
 
         <SectionSliderNewCategories
@@ -148,8 +148,6 @@ async function PageHome2() {
         </div>*/}
 
         <SectionGridFeaturePlaces cardType="card2" stayListings={dataList} />
-
-        <SectionAds />
 
          {/*<SectionOurFeatures type="type2" rightImg={rightImgPng} />
 

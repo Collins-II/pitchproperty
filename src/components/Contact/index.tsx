@@ -1,96 +1,77 @@
+"use client";
+
 import Input from "@/shared/Input";
 import NewsLatterBox from "./NewsLatterBox";
-import ButtonCircle from "@/shared/ButtonCircle";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 
 const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden dark:from-gray-900 dark:to-gray-800"
+      className="relative overflow-hidden bg-gradient-to-b from-white via-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 py-16 lg:py-24"
     >
-      <div className="listingSection__wrap">
-        <div className="flex flex-wrap items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row gap-10 items-start ">
           {/* Contact Form */}
-          <div className="z-10 w-full lg:w-7/12 xl:w-8/12">
-            <div
-              className="mb-12 rounded-lg bg-white dark:bg-gray-800 py-8 px-4"
-              data-wow-delay=".15s"
-            >
-              <h2 className="mb-3 text-3xl font-bold text-silverGray sm:text-4xl">
-                Want To Visit? <br /> Open a Ticket
+          <div className="w-full lg:w-7/12 xl:w-8/12">
+            <div className="rounded-2xl bg-transparent dark:bg-gray-800 px-2">
+              <h2 className="text-3xl font-extrabold text-gray-800 dark:text-white leading-tight">
+                Want To Visit?
+                <br />
+                <span className="text-primary-600 dark:text-primary-400">Open a Ticket</span>
               </h2>
-              <p className="mb-8 text-lg text-gray-600 dark:text-gray-300">
+              <p className="text-gray-600 dark:text-gray-300 mt-4 mb-10 text-lg">
                 Our support team will get back to you ASAP via email.
               </p>
 
-              <form>
-                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                  {/* Name Input */}
+              <form className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                    >
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                       Your Name
                     </label>
-                    <div className="relative">
-            <Input
-              fontClass=""
-              sizeClass="h-12 mt-3 px-4 py-3"
-              rounded="rounded-3xl"
-              placeholder="Enter your name ..."
-            />
-            
-          </div>
-      
+                    <Input
+                      sizeClass="h-12 px-4 py-3"
+                      rounded="rounded-lg"
+                      placeholder="John Doe"
+                    />
                   </div>
-
-                  {/* Email Input */}
                   <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                    >
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                       Your Email
                     </label>
                     <Input
-                      fontClass=""
-                      sizeClass="h-12 mt-3 px-4 py-3"
-                      rounded="rounded-3xl"
-                      placeholder="Enter email ..."
-                     />
+                      sizeClass="h-12 px-4 py-3"
+                      rounded="rounded-lg"
+                      placeholder="you@example.com"
+                    />
                   </div>
                 </div>
 
-                {/* Message Input */}
-                <div className="mt-6">
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                  >
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     Your Message
                   </label>
                   <textarea
-                    name="message"
                     rows={5}
-                    placeholder="Enter your Message"
-                    className="mt-2 w-full resize-none rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 text-gray-900 outline-none transition duration-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 dark:border-gray-700 dark:bg-gray-700 dark:text-gray-200 dark:focus:ring-primary"
+                    placeholder="How can we help you?"
+                    className="w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:ring-2 focus:ring-primary-500 focus:outline-none"
                   ></textarea>
                 </div>
 
-                {/* Submit Button */}
-                <div className="mt-6">
-                  <button aria-label="submit-button" className="w-full flex justify-center rounded-full shadow-sm bg-slate-900 px-6 py-3 text-lg font-bold text-white hover:text-slate-900 shadow-lg transition duration-300 hover:bg-white focus:outline-none focus:ring-2 focus:ring-primary-400">
-                      <ArrowRightIcon className="w-5 h-5" />
-                  </button>
-                </div>
+                <button
+                  type="submit"
+                  className="inline-flex items-center justify-center w-full gap-2 rounded-full bg-slate-900 px-6 py-3 text-white hover:bg-slate-800 transition font-semibold text-lg"
+                >
+                  Submit
+                  <ArrowRightIcon className="w-5 h-5" />
+                </button>
               </form>
             </div>
           </div>
 
-          {/* Right Section */}
-          <div className="w-full px-4 lg:w-5/12 xl:w-4/12">
+          {/* Sidebar / Newsletter */}
+          <div className="w-full lg:w-5/12 xl:w-4/12">
             <NewsLatterBox />
           </div>
         </div>

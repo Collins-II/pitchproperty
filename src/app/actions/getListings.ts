@@ -80,7 +80,7 @@ export default async function getPremiumListings(): Promise<IProperty[]> {
 
       return data;
   } catch (error: any) {
-    console.error("Error fetching premium listings:", error);
+    console.log("Error fetching premium listings:", error);
     throw new Error(error.message);
   }
 }

@@ -41,46 +41,55 @@ export const robotoSerif = Roboto_Serif({
   weight: ["400", "500", "600", "700"],
 });
 
- export const metadata: Metadata = {
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://yousell.zm";
+
+export const metadata: Metadata = {
+  title: "YouSell - Your Online Market",
+  description:
+    "Welcome to YouSell, your online market. We offer content marketing, graphic design, web design, IT consulting, and brand identity services.",
+  metadataBase: new URL(BASE_URL),
+  themeColor: "#0c0c0c",
+  applicationName: "YouSell",
   icons: {
-    apple: {
-      sizes: "180x180",
-      url: "/apple-touch-icon.png",
-    },
-    icon: {
-      url: "/favicon-32x32.png",
-      type: "image/png",
-      rel: "icon",
-      sizes: "32x32",
-    },
+    icon: [
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+    ],
+    apple: { url: "/apple-touch-icon.png", sizes: "180x180" },
     other: [
-      {
-        rel: "icon",
-        type: "image/png",
-        sizes: "16x16",
-        url: "/favicon-16x16.png",
-      },
-      {
-        rel: "manifest",
-        url: "/site.webmanifest",
-      },
       {
         rel: "mask-icon",
         url: "/safari-pinned-tab.svg",
         color: "#0c0c0c",
+      },
+      {
+        rel: "manifest",
+        url: "/site.webmanifest",
       },
     ],
   },
   openGraph: {
     title: "YouSell",
     description:
-      "Welcome to YouSell, your digital partner. We offer content marketing, graphic design, web design, IT consulting, and brand identity services",
-    url: `${currentUrl}`,
-    images: [`${currentUrl}favicon-32x32.png`],
+      "Welcome to YouSell, your digital partner. We offer content marketing, graphic design, web design, IT consulting, and brand identity services.",
+    url: BASE_URL,
+    siteName: "YouSell",
+    images: [
+      {
+        url: `${BASE_URL}/favicon-32x32.png`,
+        width: 32,
+        height: 32,
+        alt: "YouSell Icon",
+      },
+    ],
+    type: "website",
   },
-  other: {
-    "theme-color": "#0c0c0c",
-    "msapplication-TileColor": "#0c0c0c",
+  twitter: {
+    card: "summary",
+    title: "YouSell",
+    description:
+      "Welcome to YouSell, your digital partner for design, tech, and marketing.",
+    images: [`${BASE_URL}/favicon-32x32.png`],
   },
 };
 
