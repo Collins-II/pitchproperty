@@ -29,9 +29,9 @@ const SectionHeroArchivePage: FC<SectionHeroArchivePageProps> = ({
       {/* Hero Section */}
       <div className="flex flex-col-reverse lg:flex-row lg:items-center">
         {/* Left Content */}
-        <div className="flex-shrink-0 lg:w-1/2 flex flex-col space-y-6 lg:space-y-10 pb-20 xl:pr-14 lg:mr-10 xl:mr-0">
+        <div className="flex-shrink-0 lg:w-1/2 flex flex-col space-y-6 lg:space-y-10 xl:pr-14 lg:mr-10 xl:mr-0">
           <Card className="!max-w-[49rem] w-full bg-transparent">
-            <CardContent className="py-10 px-5 text-center lg:text-left">
+            <CardContent className="py-10 text-center lg:text-left">
               <h2 className="text-[30px] md:text-[46px] font-extrabold leading-10 md:leading-[50px]">
                 {listingType === "Sale" ? (
                   <>

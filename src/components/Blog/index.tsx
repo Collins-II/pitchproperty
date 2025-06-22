@@ -21,12 +21,12 @@ const Blog = () => {
     >
       <div className="">
         <div>
-          <h2 className="text-2xl font-semibold text-silverGray">Our Latest Blogs</h2>
+          <h2 className="text-2xl font-semibold text-slate-900">Our Latest Blogs</h2>
           <span className="block mt-2 text-neutral-500 dark:text-neutral-400">
             {`Find homes you can afford.`}
           </span>
         </div>
-        <div className="w-50 border-b border-neutral-200 dark:border-neutral-700 my-8"></div>
+        <div className="w-50 border-b border-slate-900 border-[2px] dark:border-neutral-700 mb-8"></div>
         <BlogSlider categories={DEMO_POSTS} itemPerRow={4}/>
       </div>
     </section>

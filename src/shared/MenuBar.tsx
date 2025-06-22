@@ -1,84 +1,72 @@
 "use client";
 
-import React, { useState, Fragment, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { Dialog, DialogPanel, Transition, TransitionChild } from "@headlessui/react";
-import { motion } from "motion/react"
-import NavMobile from "./Navigation/NavMobile";
-import { Bars3Icon } from "@heroicons/react/24/outline";
-import { CgMenuRight } from "react-icons/cg";
+import { motion } from "motion/react";
 import { usePathname } from "next/navigation";
+import { CgMenuRight } from "react-icons/cg";
+import NavMobile from "./Navigation/NavMobile";
 
 export interface MenuBarProps {
   className?: string;
   iconClassName?: string;
 }
-const MenuBar: React.FC<MenuBarProps> = ({
-  className = "p-2.5 rounded-lg text-neutral-700 dark:text-neutral-300",
-  iconClassName = "h-8 w-8",
-}) => {
-  const [isVisable, setIsVisable] = useState(false);
 
+const MenuBar: React.FC<MenuBarProps> = ({
+  className = "p-2 rounded-full text-neutral-700 dark:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition",
+  iconClassName = "w-7 h-7",
+}) => {
+  const [isVisible, setIsVisible] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
-    setIsVisable(false);
+    setIsVisible(false);
   }, [pathname]);
 
-  const handleOpenMenu = () => setIsVisable(true);
-  const handleCloseMenu = () => setIsVisable(false);
-
-  const renderContent = () => {
-    return (
-      <Transition appear show={isVisable} as={Fragment}>
-        <Dialog
-          as="div"
-          className="relative z-50 overflow-hidden"
-          onClose={handleCloseMenu}
-        >
-          <TransitionChild
-            as={Fragment}
-            enter=" duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave=" duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <motion.div className="fixed inset-0 bg-black/60 dark:bg-black/70" />
-          </TransitionChild>
-          <div className="fixed inset-0">
-            <div className="flex justify-end min-h-full ">
-              <TransitionChild
-                as={Fragment}
-                enter="transition duration-100 transform"
-                enterFrom="opacity-0 translate-x-56"
-                enterTo="opacity-100 translate-x-0"
-                leave="transition duration-150 transform"
-                leaveFrom="opacity-100 translate-x-0"
-                leaveTo="opacity-0 translate-x-56"
-              >
-                <DialogPanel className="w-full max-w-md transform overflow-hidden transition-all ">
-                  <NavMobile onClickClose={handleCloseMenu} />
-                </DialogPanel>
-              </TransitionChild>
-            </div>
-          </div>
-        </Dialog>
-      </Transition>
-    );
-  };
+  const handleOpenMenu = () => setIsVisible(true);
+  const handleCloseMenu = () => setIsVisible(false);
 
   return (
     <>
       <button
-        aria-label="menu-bar"
         onClick={handleOpenMenu}
-        className={`focus:outline-none flex items-center justify-center ${className}`}
+        aria-label="Open menu"
+        className={`flex items-center justify-center ${className}`}
       >
-        <CgMenuRight className={iconClassName}/>
+        <CgMenuRight className={iconClassName} />
       </button>
 
-      {renderContent()}
+      <Transition appear show={isVisible} as={Fragment}>
+        <Dialog as="div" className="relative z-50" onClose={handleCloseMenu}>
+          <TransitionChild
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <motion.div className="fixed inset-0 bg-black/40 dark:bg-black/70 backdrop-blur-sm" />
+          </TransitionChild>
+
+          <div className="fixed inset-0 flex justify-end">
+            <TransitionChild
+              as={Fragment}
+              enter="transition ease-out duration-300 transform"
+              enterFrom="translate-x-full"
+              enterTo="translate-x-0"
+              leave="transition ease-in duration-200 transform"
+              leaveFrom="translate-x-0"
+              leaveTo="translate-x-full"
+            >
+              <DialogPanel className="w-full max-w-sm h-full bg-white dark:bg-neutral-900 shadow-2xl rounded-l-2xl p-4 overflow-y-auto">
+                <NavMobile onClickClose={handleCloseMenu} />
+              </DialogPanel>
+            </TransitionChild>
+          </div>
+        </Dialog>
+      </Transition>
     </>
   );
 };

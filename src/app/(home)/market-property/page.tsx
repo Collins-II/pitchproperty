@@ -77,12 +77,12 @@ export default async function InventoryPage(props: PageProps) {
     const totalPages = Math.ceil(count / CLASSIFIEDS_PER_PAGE);
 
     return (
-      <div className="flex">
+      <div className="flex h-screen overflow-y-auto">
         <PropertySidebar minMaxValues={minMaxResult} searchParams={searchParams} />
 
-        <div className="flex-1 p-4 bg-white dark:bg-neutral-900">
+        <div className="flex-1 p-4 bg-neutral-100 dark:bg-neutral-900 ">
           <div className="flex space-y-2 items-center justify-between pb-4 -mt-1">
-            <div className="flex justify-between items-center w-full">
+            <div className="flex justify-between items-center w-full ">
               <h2 className="text-sm md:text-base lg:text-xl font-semibold min-w-fit">
                 We have found {count} properties
               </h2>

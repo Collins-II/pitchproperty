@@ -14,6 +14,7 @@ import CarCard2 from "./CarCard2";
 import { ArrowRightIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { ICar } from "@/lib/database/models/car.model";
+import CarCard3 from "./CarCard3";
 
 // OTHER DEMO WILL PASS PROPS
 const DEMO_DATA: CarDataType[] = DEMO_CAR_LISTINGS.slice(0,18);
@@ -51,18 +52,17 @@ const SectionGridFeatureCars: FC<SectionGridFeatureCarsProps> = ({
   return (
     <div className="nc-SectionGridFeaturePlaces relative">
       <div>
-          <h2 className="text-2xl font-semibold text-silverGray">Explore The Cars </h2>
+          <h2 className="text-2xl font-semibold text-slate-900">Explore The Cars </h2>
           <span className="block mt-2 text-neutral-500 dark:text-neutral-400">
             {`Find cars you can afford.`}
           </span>
         </div>
-        <div className="w-50 border-b border-neutral-200 dark:border-neutral-700 my-8"></div>
-        <div className="listingSection__wrap">
+        <div className="w-50 border-b border-slate-900 border-[2px] dark:border-neutral-700 mb-8"></div>
         
       <div
         className={`grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ${gridClass}`}
       >
-        {carListings.slice(0, visibleCount).map((stay) => <CarCard2 data={stay} key={stay._id} />)}
+        {carListings.slice(0, visibleCount).map((stay) => <CarCard3 data={stay} key={stay._id} />)}
       </div>
       {!allItemsLoaded && (
         <div className="flex mt-16 justify-center items-center">
@@ -71,12 +71,11 @@ const SectionGridFeatureCars: FC<SectionGridFeatureCarsProps> = ({
       )}
       {allItemsLoaded && (
               <div className="flex mt-16 justify-end items-center">
-                <button aria-label="submit-button" onClick={() => router.push("/market-cars")} className=" flex justify-center items-center rounded-full shadow-sm bg-slate-900 px-6 py-1.5 text-sm font-medium text-white hover:text-blue-500 shadow-lg transition duration-300 hover:bg-white focus:outline-none focus:ring-1 focus:ring-neutral-400">
+                <button aria-label="submit-button" onClick={() => router.push("/market-cars")} className=" flex justify-center items-center rounded-full shadow-sm bg-slate-900 px-6 py-1.5 text-sm font-medium text-white hover:text-neutral-500 shadow-lg transition duration-300 hover:bg-white focus:outline-none focus:ring-1 focus:ring-neutral-400">
                   Visit Market <ArrowRightIcon className="w-6 h-6 ml-3" />
                 </button>
               </div>
             )}
-      </div>
     </div>
   );
 };

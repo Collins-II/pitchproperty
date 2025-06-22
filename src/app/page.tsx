@@ -50,7 +50,7 @@ async function PageHome() {
       {/* GLASSMOPHIN */}
       <BgGlassmorphism />
 
-      <div className="container relative space-y-12 mb-24 lg:space-y-18 lg:mb-28">
+      <div className="container relative space-y-8 mb-8 lg:space-y-12 lg:mb-12">
         {/* SECTION HERO */}
         <ScrollUp />
         <Hero />
@@ -147,8 +147,8 @@ async function PageHome() {
         <FeaturesTab data={featuresTabData}/>  
 
         <SectionAds />
-        {/*<Blog /> */}
-        <Contact />
+        <Blog /> 
+        {/*<Contact />*/}
       </div>
     </main>
   );

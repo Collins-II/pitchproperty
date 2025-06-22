@@ -76,7 +76,7 @@ const Hero: React.FC = () => {
       </section>
 
       {/* Car Dealer Section */}
-      <section className="relative bg-gradient-to-bl from-white to-gray-50 dark:from-gray-950 dark:to-gray-900 py-20 px-4 md:px-10 xl:px-32 flex flex-col lg:flex-row items-center gap-10 rounded-3xl">
+      <section className="relative bg-gradient-to-bl from-white to-gray-50 dark:from-gray-950 dark:to-gray-900 py-10 px-4 md:px-10 xl:px-32 flex flex-col lg:flex-row items-center gap-10 rounded-3xl">
         <motion.div
           className="w-full lg:w-1/2"
           initial="hidden"
@@ -115,6 +115,7 @@ const Hero: React.FC = () => {
         <HeroFilter />
       </div>
       */}
+      <div className="border-b border-[2px] border-neutral-900 dark:border-neutral-700 mb-10"></div>
     </div>
   );
 };

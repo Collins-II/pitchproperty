@@ -58,27 +58,20 @@ const CTA: React.FC<CTAProps> = ({ title, subtitle, imageSrc, imageAlt, buttonLi
                   alt="Kingsland City Estates"
                   className=""
                 />
-                <Link
-                  href={buttonLink as Route}
-                  className="w-auto inline-flex items-center gap-2.5 rounded-full bg-slate-900 px-4 py-3 font-medium text-white hover:opacity-90 "
-                >
-                  {buttonText as string}
+               <Link
+                 href={buttonLink as Route}
+                 className="inline-flex items-center justify-center gap-2 rounded-full bg-slate-900 px-5 py-3 text-sm font-medium text-white transition hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
+               >
+                  <span className="truncate">{buttonText as string}</span>
                   <Image
                     width={20}
                     height={20}
                     src="/images/icon/icon-arrow-dark.svg"
                     alt="Arrow"
-                    className=""
-                  /> 
-                 {/* <Image
-                    width={20}
-                    height={20}
-                    src="/images/icon/icon-arrow-light.svg"
-                    alt="Arrow"
-                    className="block"
-                  />
-                  */}
-                </Link>
+                    className="w-5 h-5"
+                   />
+              </Link>
+
               </div>
             </motion.div>
           </div>

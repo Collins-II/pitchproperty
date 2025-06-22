@@ -102,7 +102,7 @@ export const Sidebar = ({ minMaxValues, searchParams }: SidebarProps) => {
 	};
 
 	return (
-		<div className="py-4 w-[21.25rem] bg-white dark:bg-neutral-800 border-r border-muted dark:border-neutral-800 hidden lg:block">
+		<div className="py-4 w-[21.25rem] bg-white dark:bg-neutral-800 border-r border-muted dark:border-neutral-800 hidden lg:block overflow-y-auto">
 			<div>
 				<div className="text-lg font-semibold flex justify-between px-4">
 					<span>Filters</span>

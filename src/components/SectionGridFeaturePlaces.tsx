@@ -111,11 +111,11 @@ const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
 
   return (
     <div className="nc-SectionGridFeaturePlaces relative">
-      <div className="mb-8">
-        <h2 className="text-2xl font-semibold text-silverGray">{heading}</h2>
+      <div className="">
+        <h2 className="text-2xl font-semibold text-slate-900">{heading}</h2>
         <p className="text-neutral-500 dark:text-neutral-400 mt-1">{subHeading}</p>
       </div>
-      <div className="w-50 border-b border-neutral-200 dark:border-neutral-700 my-8"></div>
+      <div className="w-50 border-b border-slate-900 border-[2px] dark:border-neutral-700 mb-8"></div>
       {width < 1024 ? renderSlider() : renderGrid()}
       {!allItemsLoaded && width >= 1024 && (
         <div className="flex mt-4 justify-center items-center">
@@ -126,8 +126,8 @@ const SectionGridFeaturePlaces: FC<SectionGridFeaturePlacesProps> = ({
         <div className="flex mt-4 justify-end items-center">
           <button
             aria-label="submit-button"
-            onClick={() => router.push("/")}
-            className="flex justify-center items-center rounded-full shadow-sm bg-slate-900 px-6 py-1.5 text-sm font-medium text-white hover:text-blue-500 shadow-lg transition duration-300 hover:bg-white focus:outline-none focus:ring-1 focus:ring-neutral-400"
+            onClick={() => router.push("/market-property")}
+            className="flex justify-center items-center rounded-full shadow-sm bg-slate-900 px-6 py-1.5 text-sm font-medium text-white hover:text-neutral-500 shadow-lg transition duration-300 hover:bg-white focus:outline-none focus:ring-1 focus:ring-neutral-400"
           >
             Visit Market <ArrowRightIcon className="w-6 h-6 ml-3" />
           </button>
