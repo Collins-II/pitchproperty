@@ -116,7 +116,7 @@ const FeaturesTab: React.FC<FeaturesTabProps> = ({ data, className }) => {
         >
           <Slider ref={sliderRef} {...sliderSettings}>
             {data.map((feature: any, key: number) => (
-              <div key={key} className="px-4">
+              <div key={key} className="">
                 <FeaturesTabItem
                   key={`${feature.name}-${key}`}
                   title={feature.name}

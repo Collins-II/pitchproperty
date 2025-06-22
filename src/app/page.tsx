@@ -43,7 +43,7 @@ import HIW2imgDark from "@/images/HIW2-2-dark.png";
 import HIW3imgDark from "@/images/HIW2-3-dark.png";
 
 async function PageHome() {
-  /*const auctions = await getAllAuctions();*/
+  const auctions = await getAllAuctions();
 
   return (
     <main className="nc-PageHome relative overflow-hidden">
@@ -131,10 +131,10 @@ async function PageHome() {
   
         {/*<AboutSectionOne />
 
-        <FunFact />
+        <FunFact />*/}
         {auctions.length > 0 && (
         <AuctionTab data={auctions} />
-        )} */}
+        )} 
 
         <CTA
           title="Invest & Secure Your Future"

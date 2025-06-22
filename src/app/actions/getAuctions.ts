@@ -26,6 +26,7 @@ const populateEvent = (query: any) => {
     },
     {
       path: "listingId",
+      select: "imageUrls",
     },
     {
       path: "bids.bidder",
@@ -61,7 +62,7 @@ export const getAllAuctions = async () => {
 
     // Step 4: Get fresh active auctions, populate & lean
     const freshActiveAuctionsQuery = Auction.find({ status: "active" })
-      .select("title endTime currentPrice listingModel")
+      .select("title endTime currentPrice listingModel imageUrls")
       .lean();
 
     const populated = await populateEvent(freshActiveAuctionsQuery);

@@ -86,8 +86,8 @@ const AuctionTab: FC<AuctionTabProps> = ({
           <span className="absolute -top-1 -left-2 w-3 h-3 rounded-full bg-red-400"></span>
           </h2>
         </div>
-        <div className="w-20 border-b border-neutral-200 dark:border-neutral-700 my-4"></div>
-     <div className="listingSection__wrap">
+        <div className="w-20 border-b border-slate-900 dark:border-neutral-700 border-[2px] mb-4"></div>
+     <div className="">
       <MotionConfig
         transition={{
           x: { type: "spring", stiffness: 300, damping: 30 },
@@ -142,6 +142,7 @@ const AuctionTab: FC<AuctionTabProps> = ({
         </div>
       </MotionConfig>
       </div>
+      <div className="flex md:hidden border-b border-[2px] border-neutral-900 dark:border-neutral-700 my-10"></div>
     </div>
   );
 };

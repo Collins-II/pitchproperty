@@ -16,7 +16,7 @@ export interface IBid {
 
 export interface IAuction {
   _id?: string;
-  listingId: Types.ObjectId;
+  listingId: Types.ObjectId ;
   listingModel: "Property" | "Car";
   title: string;
   description: string;
