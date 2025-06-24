@@ -24,13 +24,13 @@ export default function LandingPage() {
           alt="Luxury cars"
           priority
           className="absolute inset-0 -z-10 h-full w-full object-cover opacity-60 dark:opacity-40" />
-        <div className="container flex flex-col items-center justify-center gap-10 py-32 text-center text-gray-100">
+        <div className="container flex flex-col items-center justify-center gap-10 py-32 text-center text-slate-700">
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="max-w-4xl text-4xl/tight font-extrabold sm:text-5xl lg:text-6xl">
-            Bid on <span className="text-primary">dream rides</span> &
+            Bid on <span className="text-primary-500">dream rides</span> &
             <span className="text-secondary"> prime properties</span> — live, transparent, thrilling.
           </motion.h1>
           <motion.p
@@ -43,7 +43,7 @@ export default function LandingPage() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             className="flex flex-col sm:flex-row gap-4">
-            <Button asChild size="lg" className="text-lg px-8 py-6">
+            <Button asChild size="lg" className="text-lg px-8 py-6 bg-blue-500 hover:bg-white text-white hover:text-slate-900">
               <Link href="/auctions/live">Explore Live Auctions</Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="text-lg px-8 py-6 text-gray-100 border-gray-200/50 hover:bg-white hover:text-gray-900 dark:hover:bg-gray-100 dark:hover:text-gray-900">
@@ -55,29 +55,29 @@ export default function LandingPage() {
 
       {/* -------------------------------------------------- */}
       {/* Live activity ribbon */}
-      {/* -------------------------------------------------- */}
+      {/* -------------------------------------------------- 
       <section className="container grid lg:grid-cols-2 gap-8">
         <LiveAuctionsTicker />
         <CompletedAuctionsFeed />
       </section>
 
-      {/* -------------------------------------------------- */}
+       -------------------------------------------------- */}
       {/* Featured Categories */}
-      {/* -------------------------------------------------- */}
+      {/* -------------------------------------------------- 
       <section className="container flex flex-col gap-10">
         <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-gray-100">
           Featured Categories
         </h2>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {/* Cars */}
+          {/* Cars 
           <Link href="/auctions/live" className="group relative block overflow-hidden rounded-3xl shadow-lg">
             <Image src={heroCars} alt="Cars" className="h-80 w-full object-cover transition-transform group-hover:scale-105" />
             <span className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
             <span className="absolute bottom-6 left-6 text-2xl font-semibold text-white">Cars</span>
           </Link>
 
-          {/* Properties */}
+        
           <Link href="/auctions/live" className="group relative block overflow-hidden rounded-3xl shadow-lg">
             <Image src={heroProps} alt="Properties" className="h-80 w-full object-cover transition-transform group-hover:scale-105" />
             <span className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
@@ -86,9 +86,9 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* -------------------------------------------------- */}
+       -------------------------------------------------- */}
       {/* How it works */}
-      {/* -------------------------------------------------- */}
+      {/* -------------------------------------------------- 
       <section className="bg-gray-50 dark:bg-gray-800 py-20">
         <div className="container grid md:grid-cols-3 gap-12 text-center">
           {[
@@ -127,9 +127,9 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* -------------------------------------------------- */}
+       -------------------------------------------------- */}
       {/* Call to action */}
-      {/* -------------------------------------------------- */}
+      {/* -------------------------------------------------- 
       <section className="container flex flex-col items-center gap-8 text-center">
         <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100 max-w-3xl">
           Ready to get the best price for your asset?
@@ -141,6 +141,7 @@ export default function LandingPage() {
           <Link href="/auctions">Start Selling</Link>
         </Button>
       </section>
+      */}
     </main>
   );
 }

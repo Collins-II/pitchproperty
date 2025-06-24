@@ -28,7 +28,7 @@ const AuctionsPage: FC<AuctionsPageProps> = async () => {
   const liveBids = await getLiveBids();
 
   return (
-    <div className="container ">
+    <div className="container space-y-8 mb-8 lg:space-y-12 lg:mb-12">
       <AuctionsHero cars={data} properties={properties} />
       {/*<SectionGridFilterCard className="pb-24 lg:pb-28" /> */}
 
@@ -82,7 +82,7 @@ const AuctionsPage: FC<AuctionsPageProps> = async () => {
         <SectionSubscribe2 className="py-24 lg:py-28" /> */}
 
         {/* SECTION  */}
-        <div className="relative py-16 mb-24 lg:mb-28">
+        <div className="relative py-16">
           <BackgroundSection className="bg-orange-50 dark:bg-black dark:bg-opacity-20 " />
           <SectionGridAuthorBox />
         </div>

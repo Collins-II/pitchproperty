@@ -54,6 +54,12 @@ async function PageHome() {
         {/* SECTION HERO */}
         <ScrollUp />
         <Hero />
+        <SectionSliderNewCategories
+            heading="Explore by types of stays"
+            subHeading="Explore houses based on 10 types of stays"
+            categoryCardType="card5"
+            itemPerRow={5}
+        />
         {/*
         <SectionHero2 className="" />
         <SectionHero className="pt-10 lg:pt-16" />
@@ -73,7 +79,7 @@ async function PageHome() {
           buttonText="Get a Car"
         />
 
-        <SectionHowItWork
+        {/*<SectionHowItWork
                   data={[
                     {
                       id: 1,
@@ -100,7 +106,7 @@ async function PageHome() {
                 />
         
 
-        {/* SECTION 1 
+         SECTION 1 
         <SectionHowItWork />
         
      <FeaturesSection /> */}
@@ -121,12 +127,7 @@ async function PageHome() {
         </div>
         
 
-        <SectionSliderNewCategories
-          heading="Explore by types of properties"
-          subHeading="Explore houses based on 10 types of properties"
-          categoryCardType="card5"
-          itemPerRow={5}
-        />*/}
+        */}
       
   
         {/*<AboutSectionOne />
