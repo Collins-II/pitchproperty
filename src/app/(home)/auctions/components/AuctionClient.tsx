@@ -24,6 +24,9 @@ import { Socket } from "socket.io-client";
 import axios from "axios";
 import LiveBidTicker from "./live-bid";
 import LiveAuctionsTicker from "./bids-section";
+import ImagesSlider from "@/components/ImagesSlider";
+import Timer from "./timer";
+import { Badge } from "@/components/uix/badge";
 
 interface AuctionClientPageProps {
   auction: any;
@@ -100,7 +103,7 @@ const canPlaceBid = isUserLoggedIn && isUserNotOwner && isAuctionActive;
     try {
       const res = await fetch("/api/auction/bid", {
         method: "POST",
-        body: JSON.stringify({ auctionId: _id, amount }),
+        body: JSON.stringify({ auctionId: itemId, amount }),
         headers: { "Content-Type": "application/json" },
       });
 
@@ -139,53 +142,64 @@ const canPlaceBid = isUserLoggedIn && isUserNotOwner && isAuctionActive;
   );
 
   return (
-    <div className="container">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="rounded-xl bg-white dark:bg-gray-900 py-6 px-4 flex flex-col lg:flex-row items-start gap-6"
+        className="rounded-xl bg-white dark:bg-gray-900 container space-y-8 mb-8 lg:space-y-12 lg:mb-12 flex flex-col-reverse lg:flex-row items-start gap-6"
       >
         {/* Image Section */}
         <div className="relative w-full sm:max-w-[400px] lg:w-1/3 mx-auto overflow-hidden rounded-xl">
-          <div className="relative w-full h-80">{renderSliderGallery()}</div>
+          
           <LiveAuctionsTicker />
         </div>
 
        {/* Content Section */}
 <div className="w-full lg:w-2/3 flex flex-col gap-6">
   {/* Auction Summary */}
-  <div className="w-full dark:bg-gray-800 bg-white rounded-xl p-4 flex flex-col gap-4">
-    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-      <div className="flex-1">
-        <h2 className="text-2xl font-semibold text-slate-800 dark:text-white">{title}</h2>
+  <div className="w-full dark:bg-gray-800 bg-white rounded-xl flex flex-col gap-4">
+    <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div className="w-full flex-1">
+        <h2 className="text-3xl lg:text-4xl font-light text-slate-800 dark:text-white">Auction: {title}</h2>
 
         <div className="flex flex-wrap items-center gap-2 mt-2">
-          <h3 className="text-xl font-bold text-red-500">
+          <h3 className="text-1xl font-light text-red-500">
             {selectedCurrency} {formatNumberWithCommas(price)}
           </h3>
         </div>
 
         <p className="mt-2 text-gray-500 dark:text-gray-400">{description}</p>
 
+        <div className="flex items-center justify-between w-full sm:gap-3">
+           <Badge variant="outline" className="gap-1 px-2 py-[3px] text-xs font-medium">
+          <Timer endTime={new Date(endTime)} />
+        </Badge>
         <p className="my-2 text-sm">
           Status:{" "}
           <span className={`font-semibold ${status === "active" ? "text-green-500" : "text-gray-500"}`}>
             {status}
           </span>
         </p>
+        </div>
+
+        
       </div>
 
-      {/* Auction Timer on the right (or below on small screens) */}
+      {/* Auction Timer on the right (or below on small screens)
       <div className="shrink-0">
-        <AuctionTimer endTime={new Date(endTime)} />
-      </div>
-    </div>
+        
+      </div>  */}
+    </div> 
 
     {/* Bid Button */}
     {canPlaceBid && (
       <BidButton auctionId={_id as string} currentPrice={auction.currentPrice} onPlaceBid={handlePlaceBid} />
     )}
+    <div className="border-b border-[2px] border-neutral-900 dark:border-neutral-700"></div>
+    <ImagesSlider
+        images={imageUrls}
+        itemPerRow={5}
+      />
    {!canPlaceBid && (
   <p className="text-sm text-gray-500">
     { !session?.user?.id ? "Log in to place a bid." :
@@ -196,13 +210,13 @@ const canPlaceBid = isUserLoggedIn && isUserNotOwner && isAuctionActive;
           : "Bidding is not available." }
   </p>
 )}
-
-    <ActiveBidders data={auction.bids} />
+   {auction.bids.length > 0 &&
+    <ActiveBidders data={auction.bids} /> }
   </div>
 
 
           {/* Listing Details */}
-          <div className="rounded-xl bg-white dark:bg-gray-800 p-4">
+          <div className="rounded-xl bg-white dark:bg-gray-800">
             <h4 className="font-semibold text-lg">{isProperty ? "Property Details" : "Vehicle Details"}</h4>
             <div className="border-b border-neutral-200 dark:border-neutral-700 my-3 w-14"></div>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-sm text-neutral-700 dark:text-neutral-300">
@@ -279,7 +293,6 @@ const canPlaceBid = isUserLoggedIn && isUserNotOwner && isAuctionActive;
           <SectionAds />
         </div>
       </motion.div>
-    </div>
   );
 };
 

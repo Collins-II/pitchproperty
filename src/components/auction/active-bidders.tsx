@@ -50,9 +50,9 @@ const ActiveBidders: React.FC<BiddersProps> = ({ data }) => {
   }, []);
 
   return (
-    <div className="rounded-xl pt-6 bg-white dark:bg-gray-900">
+    <div className="rounded-xl bg-white dark:bg-gray-900">
       <h4 className="font-light text-md text-slate-700 dark:text-slate-100">Active Bidders <strong>(Top 3)</strong></h4>
-      <div className="border-b border-neutral-200 dark:border-neutral-700 my-3 w-14"></div>
+      <div className="border-b border-slate-900 border-[2px] dark:border-neutral-700 mb-3 w-14"></div>
 
       {bidders.length === 0 ? (
         <p className="text-sm text-neutral-500">No active bidders yet.</p>

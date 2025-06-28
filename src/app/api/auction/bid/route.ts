@@ -25,6 +25,7 @@ export async function POST(request: Request) {
 
     const body = await request.json();
     const { auctionId, amount } = body;
+    console.log("AUC_BID", body)
 
     const auction = await Auction.findById(auctionId).populate("user"); // Populate owner
     if (!auction) return NextResponse.json({ error: "Auction not found" }, { status: 404 });

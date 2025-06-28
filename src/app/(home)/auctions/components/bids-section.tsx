@@ -108,12 +108,12 @@ export default function LiveAuctionsTicker() {
   return (
     <section className="w-full  overflow-hidden
                         bg-white/60 backdrop-blur dark:bg-gray-900/60 dark:border-gray-700">
-      <header className="px-5 py-5">
+     {/* <header className="px-5 py-5">
         <h2 className="text-md font-semibold flex items-center gap-1
                        text-gray-900 dark:text-gray-100">
            Live Auction Activity
         </h2>
-      </header>
+      </header> */}
 
       <div className="space-y-3 max-h-[460px] overflow-y-auto pr-3 pb-5 custom-scrollbar">
         <AnimatePresence initial={false}>

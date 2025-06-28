@@ -47,7 +47,7 @@ return () => clearInterval(timer);
 const isEnded = new Date() > new Date(endTime);
 
 return ( <div className="flex items-center justify-start font-semibold">
-<Clock className="w-4 h-4 mr-3 text-red-500" />
+<Clock className="w-4 h-4 mr-3 text-neutral-500" />
 {isEnded ? ( <span className="text-destructive">Auction Ended</span>
 ) : ( <span className="text-slate-700 dark:text-slate-100 ">
 {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s left </span>
