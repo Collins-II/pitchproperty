@@ -15,7 +15,7 @@ const initialState: ListingState = {
     date: "",
     href: "" as Route<string>,
     title: "",
-    desc: "",
+    description: "",
     propertySize: 0,
     rentalForm: "",
     featuredImage: "",

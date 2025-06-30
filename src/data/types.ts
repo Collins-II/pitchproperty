@@ -69,7 +69,7 @@ export interface StayDataType {
   date: string;
   href: Route<string>;
   title: string;
-  desc: string;
+  description: string;
   role?: string;
   listingType?: string
   propertySize: number,

@@ -115,7 +115,7 @@ export default function LiveAuctionsTicker() {
         </h2>
       </header> */}
 
-      <div className="space-y-3 max-h-[460px] overflow-y-auto pr-3 pb-5 custom-scrollbar">
+      <div className="space-y-3 max-h-[460px] overflow-y-auto pr-3 pb-5 custom-scrollbar w-full">
         <AnimatePresence initial={false}>
           {bids?.map((item, idx) => (
             <motion.article
@@ -124,7 +124,7 @@ export default function LiveAuctionsTicker() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.35 }}
-              className="group flex flex-col sm:flex-row items-start sm:items-center gap-4
+              className="w-full group flex flex-col sm:flex-row items-start sm:items-center gap-4
                          rounded-2xl border px-3 py-2 shadow-sm
                          bg-gray-0 hover:bg-gray-100 backdrop-blur dark:bg-gray-800/60
                          hover:shadow-md dark:hover:bg-gray-700

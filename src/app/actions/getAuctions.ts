@@ -26,7 +26,6 @@ const populateEvent = (query: any) => {
     },
     {
       path: "listingId",
-      select: "imageUrls",
     },
     {
       path: "bids.bidder",

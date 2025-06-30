@@ -35,16 +35,15 @@ interface AuctionClientPageProps {
 
 const AuctionClientPage = ({ auction: initialAuction, bidders }: AuctionClientPageProps) => {
   const {data: session} = useSession();
-  console.log("AUCTION_CLIENT_SESSION", session)
   const selectedCurrency = useSelector((state: RootState) => state.currency.selectedCurrency);
   const [biddersArr, setBiddersArr] = useState(bidders)
 
   const [auction, setAuction] = useState<IAuction>(initialAuction);
 
   const itemId = initialAuction._id;
-  const { _id, title, imageUrls, currentPrice, bids, description, status, endTime, listingId, user } = initialAuction;
+  const { _id, title, imageUrls, currentPrice, bids, description, status, endTime, listingId, listingModel, user } = initialAuction;
 
-  const isProperty = listingId?.listingType === "Property";
+  const isProperty = listingModel === "Property";
   const price = Number(auction.currentPrice)
 
  // ✅ Check if session exists, auction is still running, and current user is not the owner
@@ -77,8 +76,6 @@ const canPlaceBid = isUserLoggedIn && isUserNotOwner && isAuctionActive;
     amenities = [],
     features = [],
   } = listingId || {};
-
-  console.log("AUCTION_CLIENT",auction)
 
   useEffect(() => {
     // Join the auction room
@@ -124,6 +121,7 @@ const canPlaceBid = isUserLoggedIn && isUserNotOwner && isAuctionActive;
         throw new Error(data.message || "Failed to place bid.");
       }
     } catch (error: any) {
+      console.log("❌ Error placing bid:", error);
       toast({ variant: "destructive", title: error.message });
     }
   };
@@ -149,13 +147,13 @@ const canPlaceBid = isUserLoggedIn && isUserNotOwner && isAuctionActive;
         className="rounded-xl bg-white dark:bg-gray-900 container space-y-8 mb-8 lg:space-y-12 lg:mb-12 flex flex-col-reverse lg:flex-row items-start gap-6"
       >
         {/* Image Section */}
-        <div className="relative w-full sm:max-w-[400px] lg:w-1/3 mx-auto overflow-hidden rounded-xl">
-          
+        <div className="relative w-full lg:w-1/2 mx-auto overflow-hidden rounded-xl space-y-4">
+          <SectionAds />
           <LiveAuctionsTicker />
         </div>
 
        {/* Content Section */}
-<div className="w-full lg:w-2/3 flex flex-col gap-6">
+<div className="w-full lg:w-1/2 flex flex-col gap-6">
   {/* Auction Summary */}
   <div className="w-full dark:bg-gray-800 bg-white rounded-xl flex flex-col gap-4">
     <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
@@ -198,7 +196,7 @@ const canPlaceBid = isUserLoggedIn && isUserNotOwner && isAuctionActive;
     <div className="border-b border-[2px] border-neutral-900 dark:border-neutral-700"></div>
     <ImagesSlider
         images={imageUrls}
-        itemPerRow={5}
+        itemPerRow={4}
       />
    {!canPlaceBid && (
   <p className="text-sm text-gray-500">
@@ -217,14 +215,14 @@ const canPlaceBid = isUserLoggedIn && isUserNotOwner && isAuctionActive;
 
           {/* Listing Details */}
           <div className="rounded-xl bg-white dark:bg-gray-800">
-            <h4 className="font-semibold text-lg">{isProperty ? "Property Details" : "Vehicle Details"}</h4>
-            <div className="border-b border-neutral-200 dark:border-neutral-700 my-3 w-14"></div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-sm text-neutral-700 dark:text-neutral-300">
+            <h4 className="font-light text-1xl">{isProperty ? "Property Details" : "Vehicle Details"}</h4>
+              <div className="border-b border-slate-900 border-[2px] dark:border-neutral-700 mb-3 w-14"></div>
+            <div className="grid grid-cols-2 gap-4 text-sm text-neutral-700 dark:text-neutral-300">
               {isProperty ? (
                 <>
                   <div className="flex items-center space-x-2 hover:text-gold transition">
                     <i className="las la-check-circle text-2xl text-silverGray"></i>
-                    <span><strong>Address:</strong> {address.suburb}</span>
+                    <span><strong>Address:</strong> {address?.suburb}</span>
                   </div>
                   <div className="flex items-center space-x-2 hover:text-gold transition">
                     <i className="las la-check-circle text-2xl text-silverGray"></i>
@@ -260,9 +258,9 @@ const canPlaceBid = isUserLoggedIn && isUserNotOwner && isAuctionActive;
 
           {/* Amenities */}
           {amenities?.length > 0 && (
-            <div className="rounded-xl bg-white dark:bg-gray-800 p-4 shadow-md">
-              <h4 className="font-semibold text-lg">Amenities</h4>
-              <div className="border-b border-neutral-200 dark:border-neutral-700 my-3 w-14"></div>
+            <div className="rounded-xl bg-white dark:bg-gray-800">
+              <h4 className="font-light text-1xl">Amenities</h4>
+              <div className="border-b border-slate-900 border-[2px] dark:border-neutral-700 mb-3 w-14"></div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-neutral-700 dark:text-neutral-300">
                 {amenities.slice(0, 6).map((item: any, index: any) => (
                   <div key={index} className="flex items-center space-x-2 hover:text-gold transition">
@@ -290,7 +288,6 @@ const canPlaceBid = isUserLoggedIn && isUserNotOwner && isAuctionActive;
             </div>
           )}
 
-          <SectionAds />
         </div>
       </motion.div>
   );

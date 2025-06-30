@@ -34,7 +34,7 @@ const PageAddListing6: FC<PageAddListing6Props> = () => {
         </span>
       </div>
 
-      <Textarea value={listingData.desc} placeholder="..." rows={14} onChange={(e) => { handleDispatch("desc", e.target.value); setValue(e.target.value)}}/>
+      <Textarea value={listingData.description} placeholder="..." rows={14} onChange={(e) => { handleDispatch("description", e.target.value); setValue(e.target.value)}}/>
     </>
   );
 };

@@ -117,7 +117,7 @@ const ImagesSlider: FC<ImagesSliderProps> = ({
       return setNumberOfitem(1);
     }
     if (windowWidth < 500) {
-      return setNumberOfitem(itemPerRow - 3);
+      return setNumberOfitem(itemPerRow - 2);
     }
     if (windowWidth < 1024) {
       return setNumberOfitem(itemPerRow - 2);

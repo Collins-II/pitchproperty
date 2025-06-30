@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     const {
       email,
       title,
-      desc,
+      description,
       propertyType,
       propertySize,
       rentalForm,
@@ -65,7 +65,7 @@ export async function POST(request: Request) {
     // Validate required fields
   /*  const requiredFields = [
       "title",
-      "desc",
+      "description",
       "propertyType",
       "propertySize",
       "rentalForm",
@@ -97,7 +97,7 @@ export async function POST(request: Request) {
       //author: currentUser._id,
       date: new Date().toISOString(),
       title,
-      desc,
+      description,
       propertyType,
       propertySize: parseInt(propertySize, 10),
       rentalForm,
