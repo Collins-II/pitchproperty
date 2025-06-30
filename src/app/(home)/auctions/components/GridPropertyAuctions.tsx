@@ -44,10 +44,8 @@ const GridPropertyAuctions: FC<GridPropertyAuctionsProps> = ({
 
   return (
     <div className="nc-SectionGridFeaturePlaces relative">
-        <div className="listingSection__wrap">
-        
       <div
-        className={`grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 ${gridClass}`}
+        className={`grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ${gridClass}`}
       >
         {data.slice(0, visibleCount).map((stay,idx) => <AuctionCard data={stay} key={idx} />)}
       </div>
@@ -56,14 +54,6 @@ const GridPropertyAuctions: FC<GridPropertyAuctionsProps> = ({
           <ButtonSecondary onClick={handleLoadMore}>Show me more</ButtonSecondary>
         </div>
       )}
-      {allItemsLoaded && (
-              <div className="flex mt-16 justify-end items-center">
-                <button aria-label="submit-button" onClick={() => router.push("/market-property")} className=" flex justify-center items-center rounded-full shadow-sm bg-slate-900 px-6 py-1.5 text-sm font-medium text-white hover:text-blue-500 shadow-lg transition duration-300 hover:bg-white focus:outline-none focus:ring-1 focus:ring-neutral-400">
-                  Visit Market <ArrowRightIcon className="w-6 h-6 ml-3" />
-                </button>
-              </div>
-            )}
-      </div>
     </div>
   );
 };

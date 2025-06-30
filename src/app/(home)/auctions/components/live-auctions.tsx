@@ -33,7 +33,6 @@ interface LiveAuctionsPageProps {
 }
 
 const LiveAuctionsPage = ({ auction: initialAuction }: LiveAuctionsPageProps) => {
-  console.log("LIVE_BIDS", initialAuction);
 
   const {data: session} = useSession();
   //const selectedCurrency = useSelector((state: RootState) => state.currency.selectedCurrency);
@@ -138,34 +137,11 @@ const LiveAuctionsPage = ({ auction: initialAuction }: LiveAuctionsPageProps) =>
   );
 
   return (
-    <div className="container">
-        <div className="flex justify-start gap-4 mb-6">
-              <Button
-                variant={category === "property" ? "default" : "outline"}
-                onClick={() => setCategory("property")}
-                className={clsx(
-                  "flex items-center gap-2 px-5 py-2 rounded-xl",
-                  category === "property" && "scale-105 bg-slate-900 text-white"
-                )}
-              >
-                <Building className="w-5 h-5" /> Properties
-              </Button>
-              <Button
-                variant={category === "car" ? "default" : "outline"}
-                onClick={() => setCategory("car")}
-                className={clsx(
-                  "flex items-center gap-2 px-5 py-2 rounded-xl",
-                  category === "car" && "scale-105 bg-slate-900 text-white"
-                )}
-              >
-                <CarFront className="w-5 h-5" /> Cars
-              </Button>
-            </div>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="rounded-xl bg-white dark:bg-gray-900 py-6 px-4 flex flex-col lg:flex-row items-start gap-6"
+        className="rounded-xl bg-white dark:bg-gray-900 flex flex-col lg:flex-row items-start gap-6"
       >
         {/* Image Section */}
         <div className="relative w-full lg:w-2/3 overflow-hidden rounded-xl">
@@ -173,14 +149,11 @@ const LiveAuctionsPage = ({ auction: initialAuction }: LiveAuctionsPageProps) =>
         </div>
 
        {/* Content Section */}
-<div className="w-full lg:w-1/3 flex flex-col gap-6">
+<div className="w-full lg:w-1/3 flex flex-col">
   {/* Auction Summary */}
           <CompletedAuctionsFeed />
-
-          <SectionAds />
         </div>
       </motion.div>
-    </div>
   );
 };
 

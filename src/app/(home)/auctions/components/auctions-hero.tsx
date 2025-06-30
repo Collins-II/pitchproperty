@@ -44,12 +44,10 @@ const AuctionsHero = ({ cars, properties }: AuctionsHeroProps) => {
     car: cars?.slice(0, 4),
   };
 
-  console.log("Featured Listings:", featuredListings);
-
   const listings = featuredListings[category];
 
   return (
-    <section className="overflow-hidden py-24 px-4 sm:px-6 xl:px-0 bg-white dark:bg-neutral-950">
+    <section className="overflow-hidden pt-24 sm:px-6 xl:px-0 bg-white dark:bg-neutral-950">
       
       <div className="relative py-4">
   {/* Background image */}
@@ -133,19 +131,37 @@ const AuctionsHero = ({ cars, properties }: AuctionsHeroProps) => {
 
 
       {/* Featured Listings Grid */}
-      <div className="mt-12 max-w-6xl mx-auto">
-        <div className="">
-          <h2 className="relative text-2xl font-semibold text-slate-700">Live Auctions
-          <span className="absolute -top-1 -left-2 w-3 h-3 rounded-full bg-red-400 animate-ping"></span>
-          <span className="absolute -top-1 -left-2 w-3 h-3 rounded-full bg-red-400"></span>
+      <div className="mt-12 max-w-6xl">
+        <div className="ml-5">
+          <h2 className="relative text-1xl font-semibold text-slate-700">Live Auctions
+            <span className="absolute -top-1 -left-2 w-3 h-3 rounded-full bg-green-400 animate-ping"></span>
+            <span className="absolute -top-1 -left-2 w-3 h-3 rounded-full bg-green-400"></span>
           </h2>
         </div>
-        <div className="w-50 border-b border-neutral-200 dark:border-neutral-700 my-4"></div>
+        <div className="w-14 border-b border-slate-900 border-[2px] dark:border-neutral-700 mb-3 ml-5"></div>
         {category === "car" ? (
           <GridCarAuctions carListings={featuredListings.car} />
         ) : (
           <GridPropertyAuctions data={featuredListings.property} />
         )}
+        <div className="border-b border-[2px] border-neutral-900 dark:border-neutral-700 my-4"></div>
+      </div>
+
+       {/* Scheduled Auctions Grid */}
+      <div className="mt-12 max-w-6xl">
+        <div className="ml-5">
+          <h2 className="relative text-1xl font-semibold text-slate-700">Scheduled Auctions
+            <span className="absolute -top-1 -left-2 w-3 h-3 rounded-full bg-red-400 animate-ping"></span>
+            <span className="absolute -top-1 -left-2 w-3 h-3 rounded-full bg-red-400"></span>
+          </h2>
+        </div>
+        <div className="w-14 border-b border-slate-900 border-[2px] dark:border-neutral-700 mb-3 ml-5"></div>
+        {category === "car" ? (
+          <GridCarAuctions carListings={featuredListings.car} />
+        ) : (
+          <GridPropertyAuctions data={featuredListings.property} />
+        )}
+        <div className="border-b border-[2px] border-neutral-900 dark:border-neutral-700 my-4"></div>
       </div>
     </section>
   );

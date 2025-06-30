@@ -34,7 +34,7 @@ const AuctionsPage: FC<AuctionsPageProps> = async () => {
 
       <LiveAuctionsPage auction={liveBids} />
       
-      <div className="relative py-16 mb-24 lg:mb-28">
+     {/* <div className="relative py-16 mb-24 lg:mb-28">
        <SectionHowItWork
                 data={[
                   {
@@ -60,14 +60,11 @@ const AuctionsPage: FC<AuctionsPageProps> = async () => {
                   },
                 ]}
               />
-              </div>
+              </div>*/} 
       <SectionAds />
 
       <FeaturesTab data={premiumCarData}/> 
-        <div className="relative ">
-          
-         <OurBrandsSection />
-        </div>
+        
         {/* SECTION 1 
           <SectionSliderNewCategories
             heading="Explore by types of stays"
@@ -80,13 +77,6 @@ const AuctionsPage: FC<AuctionsPageProps> = async () => {
 
         {/* SECTION 
         <SectionSubscribe2 className="py-24 lg:py-28" /> */}
-
-        {/* SECTION  */}
-        <div className="relative py-16">
-          <BackgroundSection className="bg-orange-50 dark:bg-black dark:bg-opacity-20 " />
-          <SectionGridAuthorBox />
-        </div>
-       
     </div>
   );
 };

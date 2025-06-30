@@ -393,7 +393,7 @@ export const NAVIGATION_DATA: NavItemType[] = [
     children: [
       { id: ncNanoId(), href: "/market-property", name: "Explore Properties" },
       { id: ncNanoId(), href: "/market-cars", name: "Explore Cars" },
-      { id: ncNanoId(), href: "/auctions", name: "Live Auctions" },
+      { id: ncNanoId(), href: "/auctions/live", name: "Live Auctions" },
     ],
   },
 

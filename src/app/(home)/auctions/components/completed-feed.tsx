@@ -74,11 +74,10 @@ export default function CompletedAuctionsFeed() {
 
   return (
     <section className="w-full rounded-2xl overflow-hidden bg-white dark:bg-gray-900 dark:border-gray-700">
-      <header className="px-4 pt-4">
-        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-3 flex items-center gap-1">
-          <span>✅</span> Recently Completed Auctions
-        </h2>
-      </header>
+      <div className="ml-5">
+          <h2 className="relative text-1xl font-semibold text-slate-700">Completed Auctions</h2>
+        </div>
+        <div className="w-14 border-b border-slate-900 border-[2px] dark:border-neutral-700 mb-3 ml-5"></div>
 
       <div className="space-y-3 max-h-[460px] overflow-y-auto pr-2 pb-4 custom-scrollbar">
         <AnimatePresence initial={false}>

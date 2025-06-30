@@ -108,12 +108,10 @@ export default function LiveAuctionsTicker() {
   return (
     <section className="w-full  overflow-hidden
                         bg-white/60 backdrop-blur dark:bg-gray-900/60 dark:border-gray-700">
-     {/* <header className="px-5 py-5">
-        <h2 className="text-md font-semibold flex items-center gap-1
-                       text-gray-900 dark:text-gray-100">
-           Live Auction Activity
-        </h2>
-      </header> */}
+      <div className="ml-5">
+          <h2 className="relative text-1xl font-semibold text-slate-700">Bids Activity</h2>
+        </div>
+        <div className="w-14 border-b border-slate-900 border-[2px] dark:border-neutral-700 mb-3 ml-5"></div>
 
       <div className="space-y-3 max-h-[460px] overflow-y-auto pr-3 pb-5 custom-scrollbar w-full">
         <AnimatePresence initial={false}>
