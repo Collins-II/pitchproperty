@@ -32,6 +32,8 @@ const CommonLayout = ({
   const { data: user } = session;
   const email = user?.user?.email;
 
+  console.log("CAR_SLICE",listingData)
+
   const onSubmit = async () => {
     try {
       const response = await axios.post("/api/listings/car", {

@@ -5,10 +5,11 @@ import Link from "next/link";
 import Image from "next/image";
 import Counter from "@/shared/Counter";
 import { Route } from "next";
+import { LocationItem } from "@/app/actions/getLocations";
 
 export interface CardCategory5Props {
   className?: string;
-  taxonomy: TaxonomyType;
+  taxonomy: LocationItem;
 }
 
 const CardCategory5: FC<CardCategory5Props> = ({
@@ -18,14 +19,14 @@ const CardCategory5: FC<CardCategory5Props> = ({
   const { count, name, href = "/", thumbnail } = taxonomy;
   return (
     <Link
-      href={`${href}/${name}` as Route}
+      href={`${href}` as Route}
       className={`nc-CardCategory5 flex flex-col ${className}`}
       data-nc-id="CardCategory5"
     >
        <div>
           <h2 className="text-1xl font-medium text-silverGray">{name}</h2>
           <span className="block mt-2 text-sm text-silverGray">
-          <Counter from={0} duration={3} to={count as number} /> <span className="mx-2">·</span> <span className="text-md font-light text-neutral-600">Properties</span>
+          <Counter from={0} duration={3} to={count as number} /> <span className="mx-2">·</span> <span className="text-md font-light text-neutral-600">{taxonomy.listingType === "property" ? "Properties" : "Cars"}</span>
           </span>
         </div>
         <div className="w-14 border-b border-neutral-200 dark:border-neutral-700 my-4"></div>

@@ -52,14 +52,14 @@ const initialState: CarListingState = {
     },
     address: {
       street: "",
-      city: "",
+      state_district: "",
       state: "",
-      postalCode: "",
+      suburb: "",
       country: "",
     },
     map: {
-      latitude: 0,
-      longitude: 0,
+      lat: 0,
+      lng: 0,
     },
   },
 };
@@ -92,9 +92,9 @@ const carListingSlice = createSlice({
       state.data.address[key] = value;
     },
 
-    updateMapField: <K extends keyof ICar["mapAddress"]>(
+    updateMapField: <K extends keyof ICar["map"]>(
       state: any,
-      action: PayloadAction<{ key: K; value: ICar["mapAddress"][K] }>
+      action: PayloadAction<{ key: K; value: ICar["map"][K] }>
     ) => {
       const { key, value } = action.payload;
       state.data.map[key] = value;

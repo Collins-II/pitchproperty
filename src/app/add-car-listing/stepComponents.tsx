@@ -4,7 +4,7 @@ import PageAddListing3 from "./[[...stepIndex]]/PageAddListing3";
 import PageAddListing4 from "./[[...stepIndex]]/PageAddListing4";
 import PageAddListing5 from "./[[...stepIndex]]/PageAddListing5";
 import PageAddListing6 from "./[[...stepIndex]]/PageAddListing6";
-//import PageAddListing7 from "./[[...stepIndex]]/PageAddListing7";
+import PageAddListing7 from "./[[...stepIndex]]/PageAddListing7";
 import PageAddListing8 from "./[[...stepIndex]]/PageAddListing8";
 import PageAddListing9 from "./[[...stepIndex]]/PageAddListing9";
 import PageAddListing10 from "./[[...stepIndex]]/PageAddListing10";
@@ -23,7 +23,7 @@ export const stepToKey: (keyof ICar)[] = [
     "listingCategory",
     "saleOff",
     "isAds",
-    "mapAddress",
+    "map",
   ];
 
 const stepComponents: { [key: number]: React.ComponentType<any> } = {
@@ -33,10 +33,10 @@ const stepComponents: { [key: number]: React.ComponentType<any> } = {
   4: PageAddListing4,
   5: PageAddListing5,
   6: PageAddListing6,
-  //7: PageAddListing7,
-  7: PageAddListing8,
-  8: PageAddListing9,
-  9: PageAddListing10,
+  7: PageAddListing7,
+  8: PageAddListing8,
+  9: PageAddListing9,
+  10: PageAddListing10,
 };
 
 export default stepComponents;

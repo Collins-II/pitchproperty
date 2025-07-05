@@ -19,7 +19,7 @@ export interface TaxonomyType {
   desc?: string;
   color?: TwMainColor | string;
   taxonomy: "category" | "tag";
-  listingType?: "car" | "properties";
+  listingType?: "car" | "property";
 }
 
 export interface AuthorType {

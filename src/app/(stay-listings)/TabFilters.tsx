@@ -195,7 +195,7 @@ useEffect(() => {
 
   const renderXClear = () => {
     return (
-      <span className="w-4 h-4 rounded-full bg-primary-500 text-white flex items-center justify-center ml-3 cursor-pointer">
+      <span className="w-4 h-4 rounded-md bg-slate-900 text-white flex items-center justify-center ml-3 cursor-pointer">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-3 w-3"
@@ -218,8 +218,8 @@ useEffect(() => {
         {({ open, close }) => (
           <>
             <Popover.Button
-              className={`flex items-center justify-center px-4 py-2 text-sm rounded-full border border-neutral-300 dark:border-neutral-700 hover:border-neutral-400 dark:hover:border-neutral-6000 focus:outline-none ${
-                open ? "!border-primary-500 " : ""
+              className={`flex items-center justify-center px-4 py-2 text-sm rounded-md border border-neutral-300 dark:border-neutral-700 hover:border-neutral-400 dark:hover:border-neutral-6000 focus:outline-none ${
+                open ? "!border-slate-900 " : ""
               }`}
             >
               <span>Type of place</span>
@@ -275,8 +275,8 @@ useEffect(() => {
         {({ open, close }) => (
           <>
             <Popover.Button
-              className={`flex items-center justify-center px-4 py-2 text-sm rounded-full border border-neutral-300 dark:border-neutral-700 hover:border-neutral-400 dark:hover:border-neutral-6000 focus:outline-none ${
-                open ? "!border-primary-500 " : ""
+              className={`flex items-center justify-center px-4 py-2 text-sm rounded-md border border-neutral-300 dark:border-neutral-700 hover:border-neutral-400 dark:hover:border-neutral-6000 focus:outline-none ${
+                open ? "!border-slate-900 " : ""
               }`}
             >
               <span>Rooms of Beds</span>
@@ -323,7 +323,7 @@ useEffect(() => {
         {({ open, close }) => (
           <>
             <Popover.Button
-              className={`flex items-center justify-center px-4 py-2 text-sm rounded-full border border-primary-500 bg-primary-50 text-primary-700 focus:outline-none `}
+              className={`flex items-center justify-center px-4 py-2 text-sm rounded-md border border-slate-900 bg-neutral-200 text-slate-700 focus:outline-none `}
             >
               <span>
                 {`$${convertNumbThousand(
@@ -376,7 +376,7 @@ useEffect(() => {
                             name="minPrice"
                             disabled
                             id="minPrice"
-                            className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-3 sm:text-sm border-neutral-200 rounded-full text-neutral-900"
+                            className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-3 sm:text-sm border-neutral-200 rounded-md text-neutral-900"
                             value={priceRange[0]}
                           />
                         </div>
@@ -399,7 +399,7 @@ useEffect(() => {
                             disabled
                             name="maxPrice"
                             id="maxPrice"
-                            className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-3 sm:text-sm border-neutral-200 rounded-full text-neutral-900"
+                            className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-3 sm:text-sm border-neutral-200 rounded-md text-neutral-900"
                             value={priceRange[1]}
                           />
                         </div>
@@ -465,7 +465,7 @@ useEffect(() => {
     return (
       <div>
         <div
-          className={`flex items-center justify-center px-4 py-2 text-sm rounded-full border border-primary-500 bg-primary-50 text-primary-700 focus:outline-none cursor-pointer`}
+          className={`flex items-center justify-center px-4 py-2 text-sm rounded-md border border-slate-900 bg-neutral-200 text-slate-700 focus:outline-none cursor-pointer`}
           onClick={openModalMoreFilter}
         >
           <span>More filters (3)</span>
@@ -587,7 +587,7 @@ useEffect(() => {
     return (
       <div>
         <div
-          className={`flex lg:hidden items-center justify-center px-4 py-2 text-sm rounded-full border border-primary-500 bg-primary-50 text-primary-700 focus:outline-none cursor-pointer`}
+          className={`flex lg:hidden items-center justify-center px-4 py-2 text-sm rounded-md border border-slate-900 bg-neutral-200 text-slate-700 focus:outline-none cursor-pointer`}
           onClick={openModalMoreFilterMobile}
         >
           <span>More filters (3)</span>
@@ -688,7 +688,7 @@ useEffect(() => {
                                     name="minPrice"
                                     disabled
                                     id="minPrice"
-                                    className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-3 sm:text-sm border-neutral-200 rounded-full text-neutral-900"
+                                    className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-3 sm:text-sm border-neutral-200 rounded-md text-neutral-900"
                                     value={priceRange[0]}
                                   />
                                 </div>
@@ -711,7 +711,7 @@ useEffect(() => {
                                     disabled
                                     name="maxPrice"
                                     id="maxPrice"
-                                    className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-3 sm:text-sm border-neutral-200 rounded-full text-neutral-900"
+                                    className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-3 sm:text-sm border-neutral-200 rounded-md text-neutral-900"
                                     value={priceRange[1]}
                                   />
                                 </div>

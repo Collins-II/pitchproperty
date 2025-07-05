@@ -1,27 +1,22 @@
 "use client";
 
-import React, { FC, useState, useEffect, useRef } from "react";
+import React, { FC, useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, useMapEvents, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L, { LatLngBounds } from "leaflet";
-import { DEMO_STAY_LISTINGS } from "@/data/listings";
 import ButtonClose from "@/shared/ButtonClose";
 import Checkbox from "@/shared/Checkbox";
 import Pagination from "@/shared/Pagination";
 import TabFilters from "./TabFilters";
 import Heading2 from "@/shared/Heading2";
 import StayCard2 from "@/components/StayCard2";
-import { StayDataType } from "@/data/types";
 import { useRouter } from "next/navigation";
 import { formatNumberWithCommas } from "@/utils/formatNumberWithCommas";
 import { useSelector } from "react-redux";
 import { RootState } from "@/utils/CurrencyStore/store";
 import { useConvertPrice } from "@/utils/CurrencyStore/currency-utils";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
-import PropertyCardH from "@/components/PropertyCardH";
 import { IProperty } from "@/lib/database/models/property.model";
-
-const DEMO_STAYS = DEMO_STAY_LISTINGS.slice(0, 12);
 
 const containerStyle = {
   width: "100%",
@@ -29,7 +24,7 @@ const containerStyle = {
 };
 
 const customIcon = new L.Icon({
-  iconUrl: "/images/marker_icon.png", // Ensure you have a marker icon
+  iconUrl: "/images/marker_icon.png",
   iconSize: [41, 41],
   iconAnchor: [12, 41],
 });
@@ -40,15 +35,6 @@ export interface SectionGridHasMapProps {
 }
 
 const ITEMS_PER_PAGE = 9;
-
-const MapEvents = ({ setBounds }: { setBounds: (bounds: L.LatLngBounds) => void }) => {
-  useMapEvents({
-    moveend: (e) => {
-      setBounds(e.target.getBounds());
-    },
-  });
-  return null;
-};
 
 const SectionGridHasMap: FC<SectionGridHasMapProps> = ({ data, city }) => {
   const selectedCurrency = useSelector((state: RootState) => state.currency.selectedCurrency);
@@ -61,9 +47,9 @@ const SectionGridHasMap: FC<SectionGridHasMapProps> = ({ data, city }) => {
   const [mapBounds, setMapBounds] = useState<L.LatLngBounds | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const defaultCenter: [number, number] = DEMO_STAYS.length > 0 
-  ? [DEMO_STAYS[0].map.lat, DEMO_STAYS[0].map.lng] 
-  : [0, 0]; // Fallback to (0,0) if no data
+  const defaultCenter: [number, number] = data?.length > 0 
+    ? [data[0].map.lat, data[0].map.lng] 
+    : [0, 0];
 
   const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
   const paginatedData = filteredData.slice(
@@ -71,47 +57,55 @@ const SectionGridHasMap: FC<SectionGridHasMapProps> = ({ data, city }) => {
     currentPage * ITEMS_PER_PAGE
   );
 
+
+  useEffect(() => {
+  setFilteredData(data)
+}, [data]);
+
+
   useEffect(() => {
     if (searchAsMove && mapBounds) {
       setFilteredData(
-        data.filter(
+        data?.filter(
           (stay) =>
             mapBounds.contains([stay.map.lat, stay.map.lng])
         )
       );
     }
   }, [mapBounds, searchAsMove, data]);
-  
 
   const MapWithBounds = ({ setMapBounds }: { setMapBounds: (bounds: LatLngBounds) => void }) => {
-  useMapEvents({
-    moveend: (event) => {
-      setMapBounds(event.target.getBounds());
-    },
-  });
+    useMapEvents({
+      moveend: (event) => {
+        setMapBounds(event.target.getBounds());
+      },
+    });
 
-  return null; // This component only handles map events
-};
+    return null;
+  };
 
   return (
     <div>
       <div className="relative flex min-h-screen">
         {/* CARD LIST */}
-        <div className="min-h-screen w-full xl:w-[60%] 2xl:w-[60%] max-w-[1184px] flex-shrink-0 xl:px-8 pt-4">
-          <Heading2 heading={city} count={data.length} className="!mb-8" />
-          <div className="mb-8 lg:mb-11">
+        <div className="min-h-screen w-full xl:w-[60%] max-w-[1184px] flex-shrink-0 xl:px-8 pt-8">
+          <Heading2 heading={city} count={data?.length} type={data[0].listingCategory} className="!mb-4" />
+          <div className="mb-4 lg:mb-8">
             <TabFilters data={data} setFilteredData={setFilteredData} />
+            <div className="border-b border-[2px] border-neutral-900 dark:border-neutral-700 my-4"></div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 2xl:gap-x-6 gap-y-8">
-            {paginatedData.map((item) => (
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-5 gap-y-8">  
+            {paginatedData.length === 0 ? (
+            <div className="col-span-full text-center text-gray-500">No results found.</div>
+             ) : (paginatedData.map((item) => (
               <div
-                key={item.id}
-                onMouseEnter={() => setCurrentHoverID(item.id as string | number)}
+                key={item._id}
+                onMouseEnter={() => setCurrentHoverID(item._id)}
                 onMouseLeave={() => setCurrentHoverID(-1)}
               >
-                <StayCard2 data={item} key={item.id} />
+                <StayCard2 data={item} />
               </div>
-            ))}
+            )))}
           </div>
           <div className="flex mt-16 justify-center items-center">
             <Pagination
@@ -147,38 +141,35 @@ const SectionGridHasMap: FC<SectionGridHasMapProps> = ({ data, city }) => {
                 className="text-xs xl:text-sm"
                 name="searchAsMove"
                 label="Search as I move the map"
-                //checked={searchAsMove}
                 handleDispatch={() => setSearchAsMove(!searchAsMove)}
               />
             </div>
 
             {/* LEAFLET MAP */}
-           <MapContainer
-             center={defaultCenter}
-             zoom={13}
-             className="w-full h-full"
-             style={containerStyle}
+            <MapContainer
+              center={defaultCenter}
+              zoom={13}
+              className="w-full h-full"
+              style={containerStyle}
             >
-
               <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
               {filteredData.map((item) => (
-                <Marker key={item.id} position={[item.map.lat, item.map.lng]} icon={customIcon}>
+                <Marker key={item._id} position={[item.map.lat, item.map.lng]} icon={customIcon}>
                   <Popup>
-                <div className="w-48">
-                  <img src={item.featuredImage as string} alt={item.title} className="w-full h-28 object-cover rounded-md" />
-                  <h3 className="text-sm font-semibold mt-2">{item.title}</h3>
-                  <p className="text-gray-600 text-xs">{selectedCurrency} {formatNumberWithCommas(convertPrice(Number(item.price)))}</p>
-    
-                  <button
-                    aria-label={`View details of ${item.title}`}
-                    onClick={() => router.push(`/listing-stay-detail`)} 
-                    className="w-full flex justify-center rounded-full shadow-sm bg-primary-600 px-6 py-3 text-lg font-bold text-white hover:text-primary-600 shadow-lg transition duration-300 hover:bg-white focus:outline-none focus:ring-2 focus:ring-primary-400">
-                      <ArrowRightIcon className="w-5 h-5" />
-                  </button>
-                </div>
-              </Popup>
+                    <div className="w-48">
+                      <img src={item.featuredImage} alt={item.title} className="w-full h-28 object-cover rounded-md" />
+                      <h3 className="text-sm font-semibold mt-2">{item.title}</h3>
+                      <p className="text-gray-600 text-xs">{selectedCurrency} {formatNumberWithCommas(convertPrice(Number(item.price)))}</p>
+                      <button
+                        aria-label={`View details of ${item.title}`}
+                        onClick={() => router.push(`/listing-stay-detail?id=${item._id}`)}
+                        className="w-full flex justify-center rounded-full shadow-sm bg-primary-600 px-6 py-3 text-lg font-bold text-white hover:text-primary-600 shadow-lg transition duration-300 hover:bg-white focus:outline-none focus:ring-2 focus:ring-primary-400">
+                        <ArrowRightIcon className="w-5 h-5" />
+                      </button>
+                    </div>
+                  </Popup>
                 </Marker>
               ))}
               <MapWithBounds setMapBounds={setMapBounds} />

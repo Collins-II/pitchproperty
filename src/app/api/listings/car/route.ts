@@ -86,9 +86,9 @@ export async function POST(request: Request) {
       premiumDates: isSubscription?.date || [],
       address: {
         street: address?.street || "",
-        city: address?.city || "",
+        state_district: address?.state_district || "",
         state: address?.state || "",
-        postalCode: address?.postalCode || "",
+        suburb: address?.suburb || "",
         country: address?.country || "",
       },
       map: {

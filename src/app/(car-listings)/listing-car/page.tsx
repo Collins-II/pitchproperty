@@ -29,6 +29,7 @@ export interface ListingCarPageProps {}
 
 const ListingCarPage: FC<ListingCarPageProps> = async () => {
   const data = await getCarPremium();
+   console.log("P__Prop",data)
 
   return (
     <div className="container space-y-8 mb-8 lg:space-y-12 lg:mb-12">

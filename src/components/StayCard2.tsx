@@ -17,6 +17,7 @@ import { IProperty } from "@/lib/database/models/property.model";
 import { Route } from "next";
 import { IoBedOutline } from "react-icons/io5";
 import { LuDoorOpen } from "react-icons/lu";
+import { getCurrencySymbol } from "@/lib/utils";
 
 export interface StayCard2Props {
   className?: string;
@@ -73,8 +74,8 @@ const StayCard2: FC<StayCard2Props> = ({
         <span className="text-neutral-500 dark:text-neutral-400">
           <span className="font-semibold text-silverGray">{listingType} ·</span> {bedrooms} beds
         </span>
-        <span className="text-1xl font-semibold text-blue-900 dark:text-blue-500">
-          {selectedCurrency} {formatNumberWithCommas(convertPrice(Number(price)))}
+        <span className="text-sm font-semibold text-blue-900 dark:text-blue-500">
+          {getCurrencySymbol(selectedCurrency)} {formatNumberWithCommas(convertPrice(Number(price)))}
         </span>
       </div>
 

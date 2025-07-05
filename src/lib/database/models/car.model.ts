@@ -83,15 +83,15 @@ export interface ICar {
   fuelType: FuelType;
   bodyType: BodyType;
   address: {
-    street: string;
-    city: string;
-    state?: string;
-    postalCode: string;
-    country: string;
-  };
-  mapAddress: {
-    latitude: number;
-    longitude: number;
+    country: string,
+    state: string,
+    state_district: string,
+    suburb: string,
+    street: string,
+  },
+  map: {
+    lat: number;
+    lng: number;
   };
   odoUnit: OdoUnit;
   currency: CurrencyCode;
@@ -184,17 +184,17 @@ const CarSchema = new Schema<ICar>(
       enum: Object.values(CarStatus),
       default: CarStatus.DRAFT,
     },
-    address: {
-      street: {type: String},
-      city: {type: String},
-      state: {type: String},
-      postalCode: {type: String},
-      country: {type: String},
-    },
-    mapAddress: {
-      latitude: {type: Number},
-      longitude: {type: Number}
-    },
+   address: {
+    country: { type: String, required: true },
+    state: { type: String, required: true },
+    state_district: { type: String, required: true },
+    suburb: { type: String, required: true },
+    street: { type: String, required: true },
+  },
+    map: {
+    lat: { type: Number, required: true },
+    lng: { type: Number, required: true },
+  },
     featuredImage: { type: String },
     galleryImgs: [{ type: String }],
     images: [{ type: Schema.Types.ObjectId, ref: "Image" }],

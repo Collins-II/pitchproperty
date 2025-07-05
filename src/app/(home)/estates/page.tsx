@@ -103,6 +103,7 @@ const DEMO_CATS_2: TaxonomyType[] = [
 
 async function PageHome2() {  
   const dataList = await getPremiumListings();
+  console.log("P__Prop",dataList)
 
   return (
     <main className="nc-PageHome2 relative overflow-hidden">

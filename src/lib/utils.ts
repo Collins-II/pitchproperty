@@ -37,6 +37,41 @@ interface FormatPriceArgs {
 	currency: CurrencyCode | null;
 }
 
+export function extractCityName(location: string): string {
+  // Remove common administrative suffixes (case-insensitive)
+  const cleaned = location
+    .replace(/\b(District|Province|City|Region|Municipality|County|Metropolitan)\b$/i, "")
+    .trim();
+
+  // Convert to title case
+  return cleaned
+    .toLowerCase()
+    .split(" ")
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
+export const getCurrencySymbol = (currencyCode: string): string => {
+  const symbols: Record<string, string> = {
+    USD: "$",
+    EUR: "€",
+    GBP: "£",
+    JPY: "¥",
+    CNY: "¥",
+    INR: "₹",
+    NGN: "₦",
+    ZMW: "ZK",
+    KES: "KSh",
+    ZAR: "R",
+    CAD: "$",
+    AUD: "$",
+    // Add more as needed
+  };
+
+  return symbols[currencyCode.toUpperCase()] || currencyCode;
+};
+
+
 export function formatUlezCompliance(ulezCompliance: ULEZCompliance) {
 	return ulezCompliance === ULEZCompliance.EXEMPT ? "Exempt" : "Non-Exempt";
 }

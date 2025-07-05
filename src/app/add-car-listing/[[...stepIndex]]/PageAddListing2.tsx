@@ -32,7 +32,7 @@ const PageAddListing2: FC = () => {
     dispatch(updateAddressField({ key, value }));
   };
 
-  const handleMapDispatch = <K extends keyof ICar["mapAddress"]>(key: K, value: ICar["mapAddress"][K]) => {
+  const handleMapDispatch = <K extends keyof ICar["map"]>(key: K, value: ICar["map"][K]) => {
     dispatch(updateMapField({ key, value }));
   };
 
@@ -50,8 +50,8 @@ const PageAddListing2: FC = () => {
       if (data?.length) {
         const { lat, lon } = data[0];
         setLocation({ lat: parseFloat(lat), long: parseFloat(lon) });
-        handleMapDispatch("latitude", parseFloat(lat));
-        handleMapDispatch("longitude", parseFloat(lon));
+        handleMapDispatch("lat", parseFloat(lat));
+        handleMapDispatch("lng", parseFloat(lon));
       }
     } catch (err) {
       console.error(err);
@@ -83,12 +83,12 @@ const PageAddListing2: FC = () => {
 
         handleDispatch("country", addr.country);
         handleDispatch("state", addr.state);
-        handleDispatch("city", addr.state_district);
-        handleDispatch("postalCode", addr.suburb);
+        handleDispatch("state_district", addr.state_district);
+        handleDispatch("suburb", addr.suburb);
         handleDispatch("street", `${addr.house_number || ""} ${addr.road || ""}`.trim());
 
-        handleMapDispatch("latitude", latitude);
-        handleMapDispatch("longitude", longitude);
+        handleMapDispatch("lat", latitude);
+        handleMapDispatch("lng", longitude);
       } catch (err) {
         console.error(err);
       } finally {
@@ -136,8 +136,8 @@ const PageAddListing2: FC = () => {
           <FormItem label="City">
             <Input
               placeholder="City"
-              value={address.city || ""}
-              onChange={(e) => handleDispatch("city", e.target.value)}
+              value={address.state_district || ""}
+              onChange={(e) => handleDispatch("state_district", e.target.value)}
             />
           </FormItem>
           <FormItem label="State">
@@ -150,8 +150,8 @@ const PageAddListing2: FC = () => {
           <FormItem label="Suburb">
             <Input
               placeholder="Suburb"
-              value={address.postalCode || ""}
-              onChange={(e) => handleDispatch("postalCode", e.target.value)}
+              value={address.suburb || ""}
+              onChange={(e) => handleDispatch("suburb", e.target.value)}
             />
           </FormItem>
         </div>

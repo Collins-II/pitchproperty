@@ -41,9 +41,12 @@ import HIW3img from "@/images/HIW2-3.png";
 import HIW1imgDark from "@/images/HIW2-1-dark.png";
 import HIW2imgDark from "@/images/HIW2-2-dark.png";
 import HIW3imgDark from "@/images/HIW2-3-dark.png";
+import { getPropertiesGroupedByDistrict, getCarLocations } from "./actions/getLocations";
 
 async function PageHome() {
   const auctions = await getAllAuctions();
+  const propertyData = await getPropertiesGroupedByDistrict();
+  const carData = await getCarLocations();
 
   return (
     <main className="nc-PageHome relative overflow-hidden">
@@ -59,6 +62,9 @@ async function PageHome() {
             subHeading="Explore houses based on 10 types of stays"
             categoryCardType="card5"
             itemPerRow={5}
+            categories={propertyData}
+            propertyData={propertyData}
+            carData={carData}
         />
         {/*
         <SectionHero2 className="" />

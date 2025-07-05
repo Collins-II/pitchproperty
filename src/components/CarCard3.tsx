@@ -19,7 +19,7 @@ import { IoBedOutline } from "react-icons/io5";
 import { LuDoorOpen } from "react-icons/lu";
 import { ICar } from "@/lib/database/models/car.model";
 import { Badge } from "./ui/badge";
-import { cn } from "@/lib/utils";
+import { cn, getCurrencySymbol } from "@/lib/utils";
 import { createSlug, formatCurrency } from "@/lib/helper";
 import {
   CogIcon,
@@ -91,8 +91,8 @@ const CarCard3: FC<StayCard2Props> = ({
         <span className="text-neutral-500 dark:text-neutral-400">
           <span className="font-semibold text-silverGray">{carModel} ·</span> {seats} seats
         </span>
-        <span className="text-1xl font-semibold text-blue-900 dark:text-blue-500">
-          {selectedCurrency} {formatNumberWithCommas(convertPrice(Number(price)))}
+        <span className="text-sm font-semibold text-blue-900 dark:text-blue-500">
+          {getCurrencySymbol(selectedCurrency)} {formatNumberWithCommas(convertPrice(Number(price)))}
         </span>
       </div>
 
