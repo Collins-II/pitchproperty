@@ -43,24 +43,26 @@ const StayCard2: FC<StayCard2Props> = ({
     bedrooms,
     bathrooms,
     listingType,
-    href = "/listing-stay-detail",
+    href,
     like,
     saleOff,
     isAds,
     price,
     reviewStart,
     reviewCount,
-    id,
+    _id,
   } = data;
+
+  const urlSlug = `/listing-stay-detail/${_id}`
 
   const renderSliderGallery = () => (
     <div className="relative w-full">
       <GallerySlider
-        uniqueID={`StayCard2_${id}`}
+        uniqueID={`StayCard2_${_id}`}
         ratioClass="aspect-w-12 aspect-h-11"
         galleryImgs={galleryImgs}
         imageClass="rounded-xl"
-        href={href as Route}
+        href={urlSlug as Route}
       />
       <BtnLikeIcon isLiked={like} className="absolute right-3 top-3 z-[1]" />
       {saleOff && <SaleOffBadge className="absolute left-3 top-3" />}
@@ -130,7 +132,7 @@ const StayCard2: FC<StayCard2Props> = ({
   return (
     <div className={`nc-StayCard2 group relative ${className} w-200 bg-white border border-[0.5px] border-neutral-200 rounded-md p-2`}>
       {renderSliderGallery()}
-      <Link href={href as Route} className="block px-1.5 pt-2 pb-4">
+      <Link href={urlSlug as Route} className="block px-1.5 pt-2 pb-4">
         {renderContent()}
       </Link>
     </div>

@@ -37,6 +37,7 @@ export interface SectionGridHasMapProps {
 const ITEMS_PER_PAGE = 9;
 
 const SectionGridHasMap: FC<SectionGridHasMapProps> = ({ data, city }) => {
+  console.log("MAP_DATA__",data)
   const selectedCurrency = useSelector((state: RootState) => state.currency.selectedCurrency);
   const convertPrice = useConvertPrice();
   const router = useRouter();
@@ -159,7 +160,7 @@ const SectionGridHasMap: FC<SectionGridHasMapProps> = ({ data, city }) => {
                 <Marker key={item._id} position={[item.map.lat, item.map.lng]} icon={customIcon}>
                   <Popup>
                     <div className="w-48">
-                      <img src={item.featuredImage} alt={item.title} className="w-full h-28 object-cover rounded-md" />
+                      <img src={item.galleryImgs[0]} alt={item.title} className="w-full h-28 object-cover rounded-md" />
                       <h3 className="text-sm font-semibold mt-2">{item.title}</h3>
                       <p className="text-gray-600 text-xs">{selectedCurrency} {formatNumberWithCommas(convertPrice(Number(item.price)))}</p>
                       <button

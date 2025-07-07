@@ -4,18 +4,18 @@
 //import getReservations from "@/app/actions/getReservations";
 
 import { Metadata } from 'next';
-import ListingCarDetailPage from "./carClient";
+import ClientListingDetails from "../components/ClientDetails";
 //import getCarListingById from "@/app/actions/getCarListingById";
 import { IUser } from "@/lib/database/models/user.model";
 import { DEMO_CAR_LISTINGS } from '@/data/listings';
 import { CarDataType } from '@/data/types';
 import getCurrentUser from '@/app/actions/getCurrentUser';
 import getListingById from '@/app/actions/getCarListingById';
-import getCarListingById from '@/app/actions/getCarListingById';
+import { getPropertyById } from '@/app/actions/getListings';
 
 export interface IParams {
   params: {
-    carId: string;
+    id: string;
   }
 }
 
@@ -37,17 +37,17 @@ export interface IParams {
   }
 }*/
 
-const ListingPage = async ({params}: {params: Promise<{ carId: string }>}) => {
-  const { carId } = await params;
+const ListingPage = async ({params}: {params: Promise<{ id: string }>}) => {
+  const { id } = await params;
   //const listing: CarDataType = DEMO_CAR_LISTINGS[0];
 
-  const listing = await getCarListingById(carId);
+  const listing = await getPropertyById(id);
   const currentUser = await getCurrentUser();
 
   return (
     <>
-      <ListingCarDetailPage
-        carData={listing as any}
+      <ClientListingDetails
+        data={listing as any}
         currentUser={currentUser as any}
       />
     </>
@@ -55,10 +55,10 @@ const ListingPage = async ({params}: {params: Promise<{ carId: string }>}) => {
 }
 
 // ✅ METADATA FUNCTION
-export async function generateMetadata({params}: {params: Promise<{ carId: string }>}) {
-  const { carId } = await params;
+export async function generateMetadata({params}: {params: Promise<{ id: string }>}) {
+  const { id } = await params;
    // fetch data
- const listing = await getListingById(carId);
+ const listing = await getListingById(id);
 
   return {
     title: listing?.title,

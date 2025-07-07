@@ -90,55 +90,62 @@ export async function getPropertyById(id: string) {
     await connectToDatabase();
 
     if (!id) {
-      throw new Error("Car ID is required");
+      throw new Error("Property ID is required");
     }
 
     const listing = await populateEvent(Property.findById(id));
+    if (!listing) return null;
 
-    if (!listing) {
-      return null;
-    }
-
-    // Convert the listing object to a plain structure
     const plainListing = {
       _id: listing._id.toString(),
       author: listing.author?.toString(),
       date: listing.date,
       href: listing.href,
       title: listing.title,
+      description: listing.description,
+      propertySize: listing.propertySize,
+      rentalForm: listing.rentalForm,
       featuredImage: listing.featuredImage,
+      premiumSubscription: listing.premiumSubscription,
+      premiumDuration: listing.premiumDuration,
+      premiumDates: listing.premiumDates,
       commentCount: listing.commentCount,
       viewCount: listing.viewCount,
-      desc: listing.desc,
-      address: listing.address,
-      carType: listing.carType,
-      premiumSubscription: listing.premiumSubscription,
-      premiumDates: listing.premiumDates,
-      premiumDuration: listing.premiumDuration,
-      rules: listing.rules,
-      utilities: listing.utilities,
+      address: {
+        country: listing.address.country,
+        state: listing.address.state,
+        state_district: listing.address.state_district,
+        suburb: listing.address.suburb,
+        street: listing.address.street,
+      },
+      amenities: listing.amenities,
       reviewStart: listing.reviewStart,
       reviewCount: listing.reviewCount,
       like: listing.like,
       galleryImgs: listing.galleryImgs,
+      rules: listing.rules || [],
       price: listing.price,
+      currency: listing.currency,
+      discount: listing.discount,
       listingCategory: listing.listingCategory,
       listingType: listing.listingType,
-      seats: listing.seats,
-      gearshift: listing.gearshift,
-      currency: listing.currency,
-      category: listing.category,
-      availableDate: listing.availableDate,
-      saleOff: listing.saleOff,
-      isAds: listing.isAds,
-      map: listing.map,
-      user: listing.user?.toString(),
-      reservations: listing.reservations,
+      maxGuests: listing.maxGuests,
+      bedrooms: listing.bedrooms,
+      bathrooms: listing.bathrooms,
+      availableDate: listing.availableDate || [],
+      saleOff: listing.saleOff ?? null,
+      isAds: listing.isAds ?? null,
+      isAuction: listing.isAuction,
+      isFeatured: listing.isFeatured,
+      map: {
+        lat: listing.map.lat,
+        lng: listing.map.lng,
+      },
     };
 
     return JSON.parse(JSON.stringify(plainListing));
   } catch (error: any) {
-    console.log("List_Err", error);
+    console.error("List_Err:", error);
     throw new Error(error.message);
   }
 }

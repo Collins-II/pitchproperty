@@ -116,7 +116,7 @@ const ListingCarDetailPage: FC<ListingCarDetailPageProps> = ({carData, currentUs
           <span>·</span>
           <span>
             <i className="las la-map-marker-alt"></i>
-            <span className="ml-1">{`${carData.address.city}, ${carData.address.street}`}</span>
+            <span className="ml-1">{`${carData.address.suburb}, ${carData.address.street}`}</span>
           </span>
         </div>
 

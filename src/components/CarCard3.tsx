@@ -66,7 +66,9 @@ const CarCard3: FC<StayCard2Props> = ({
       saleOff,
     } = data;
   
-    const urlSlug = slug || createSlug(title || "car");
+    //const urlSlug = slug || createSlug(title || "car");
+    const urlSlug = `/listing-car-detail/${_id}`
+
     const conditionLabel =
       CAR_CONDITION_OPTIONS.find((opt) => opt.value === status)?.label || status;
 
@@ -168,7 +170,7 @@ const CarCard3: FC<StayCard2Props> = ({
   return (
     <div className={`nc-StayCard2 group relative ${className} bg-white (max-width: 400px) 100vw, 300px border border-[0.5px] border-neutral-200 rounded-md p-2`}>
       {renderSliderGallery()}
-      <Link href={"/" as Route} className="block px-1.5 pt-2 pb-4">
+      <Link href={urlSlug as Route} className="block px-1.5 pt-2 pb-4">
         {renderContent()}
       </Link>
     </div>

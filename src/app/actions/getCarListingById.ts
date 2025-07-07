@@ -15,7 +15,7 @@ const populateEvent = (query: any) => {
   });
 };
 
-export default async function getListingById(id: string) {
+export default async function getCarListingById(id: string) {
   try {
     await connectToDatabase();
 
