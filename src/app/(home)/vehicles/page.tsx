@@ -63,6 +63,7 @@ const DEMO_CATS_2: TaxonomyType[] = [
 
 async function PageHome3() {
   const data = await getPremiumListings();
+  
 
   return (
     <main className="nc-PageHome3 relative overflow-hidden">

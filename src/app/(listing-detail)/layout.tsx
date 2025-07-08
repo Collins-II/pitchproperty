@@ -44,18 +44,6 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
 
       <div className="container ListingDetailPage__content">{children}</div>
 
-      {/* OTHER SECTION */}
-      <div className="container py-24 lg:py-32">
-        <SectionSliderNewCategories
-          categories={DEMO_CATS}
-          categoryCardType="card5"
-          itemPerRow={5}
-          heading="Properties to explore"
-          subHeading="Popular properties that Kingsland City recommends for you"
-          sliderStyle="style2"
-        />
-      </div>
-
       {/* PAYMENT MODAL 
       <PaymentModal isOpen={isPaymentModalOpen} onClose={() => setPaymentModalOpen(false)} /> */}
 

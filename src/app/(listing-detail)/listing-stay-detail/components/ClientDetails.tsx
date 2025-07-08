@@ -434,7 +434,7 @@ const ClientDetailPage: FC<DetailPageProps> = ({data, currentUser}) => {
         <div>
           <h2 className="text-2xl font-semibold text-silverGray">Map Location</h2>
           <span className="block mt-2 text-neutral-500 dark:text-neutral-400">
-            Livingstone, Southern Province
+            {`${data?.address.suburb}, ${data.address.state}`}
           </span>
         </div>
         <div className="w-14 border-b border-neutral-200 dark:border-neutral-700" />
@@ -499,6 +499,15 @@ const ClientDetailPage: FC<DetailPageProps> = ({data, currentUser}) => {
   const renderSidebar = () => {
     return (
       <div className="listingSectionSidebar__wrap shadow-xl p-6 rounded-2xl bg-white dark:bg-gray-900">
+        {/* Booking Form */}
+   {data?.listingType === "Property" && data.listingCategory === "RENT" && (    
+  <form className="flex flex-col gap-4 border border-neutral-200 dark:border-neutral-700 rounded-xl mt-4 p-4">
+    <StayDatesRangeInput className="flex-1 z-[11]" />
+    <div className="w-full border-b border-neutral-200 dark:border-neutral-700"></div>
+    <GuestsInput className="flex-1" />
+  </form>
+  )} 
+  
   {/* Price & Rating */}
   <div className="flex justify-between items-center border-b pb-4 border-neutral-200 dark:border-neutral-700">
     <div>
@@ -510,13 +519,6 @@ const ClientDetailPage: FC<DetailPageProps> = ({data, currentUser}) => {
     <StartRating />
   </div>
 
-  {/* Booking Form 
-  <form className="flex flex-col gap-4 border border-neutral-200 dark:border-neutral-700 rounded-xl mt-4 p-4">
-    <StayDatesRangeInput className="flex-1 z-[11]" />
-    <div className="w-full border-b border-neutral-200 dark:border-neutral-700"></div>
-    <GuestsInput className="flex-1" />
-  </form>
-  */}
 
   {/* Payment Breakdown */}
   <div className="flex flex-col gap-3 mt-6 text-sm text-gray-700 dark:text-gray-300">
@@ -555,7 +557,8 @@ const ClientDetailPage: FC<DetailPageProps> = ({data, currentUser}) => {
           >
              <Image
                fill
-               src={data.galleryImgs[0]}
+               src={data?.galleryImgs[0]}
+               unoptimized
                alt="Featured image"
                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
                className="object-cover rounded-md sm:rounded-xl"
@@ -577,6 +580,7 @@ const ClientDetailPage: FC<DetailPageProps> = ({data, currentUser}) => {
           <Image
             fill
             src={item}
+            unoptimized
             alt={`Gallery image ${index + 1}`}
             sizes="400px"
             className="object-cover rounded-md sm:rounded-xl"

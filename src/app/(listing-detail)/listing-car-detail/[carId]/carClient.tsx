@@ -433,6 +433,13 @@ const ListingCarDetailPage: FC<ListingCarDetailPageProps> = ({carData, currentUs
   const renderSidebarPrice = () => {
     return (
       <div className="listingSectionSidebar__wrap shadow-xl">
+        {carData?.listingType === "Car" && carData.listingCategory === "RENT" && ( 
+        <div className="flex flex-col border border-neutral-200 dark:border-neutral-700 rounded-3xl ">
+          <RentalAppointment setReservedDate={setReservedDate} reservedDate={reservedDate} className="flex-1 z-[11]" />
+          <div className="w-full border-b border-neutral-200 dark:border-neutral-700"></div>
+          <TimeSelection setTimeSlot={setTimeSlot} timeSlot={timeSlot} />
+        </div>
+          )}
         {/* PRICE */}
         <div className="flex justify-between">
           <span className="text-3xl font-semibold">
@@ -442,13 +449,6 @@ const ListingCarDetailPage: FC<ListingCarDetailPageProps> = ({carData, currentUs
             </span>
           </span>
           <StartRating />
-        </div>
-
-        
-        <div className="flex flex-col border border-neutral-200 dark:border-neutral-700 rounded-3xl ">
-          <RentalAppointment setReservedDate={setReservedDate} reservedDate={reservedDate} className="flex-1 z-[11]" />
-          <div className="w-full border-b border-neutral-200 dark:border-neutral-700"></div>
-          <TimeSelection setTimeSlot={setTimeSlot} timeSlot={timeSlot} />
         </div>
 
         {/* SUM */}

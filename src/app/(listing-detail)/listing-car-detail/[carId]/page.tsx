@@ -12,6 +12,8 @@ import { CarDataType } from '@/data/types';
 import getCurrentUser from '@/app/actions/getCurrentUser';
 import getListingById from '@/app/actions/getCarListingById';
 import getCarListingById from '@/app/actions/getCarListingById';
+import SectionSliderNewCategories from '@/components/SectionSliderNewCategories';
+import { getCarLocations, getPropertiesGroupedByDistrict } from '@/app/actions/getLocations';
 
 export interface IParams {
   params: {
@@ -40,7 +42,8 @@ export interface IParams {
 const ListingPage = async ({params}: {params: Promise<{ carId: string }>}) => {
   const { carId } = await params;
   //const listing: CarDataType = DEMO_CAR_LISTINGS[0];
-
+  const propertyData = await getPropertiesGroupedByDistrict();
+  const carData = await getCarLocations();
   const listing = await getCarListingById(carId);
   const currentUser = await getCurrentUser();
 
@@ -50,6 +53,18 @@ const ListingPage = async ({params}: {params: Promise<{ carId: string }>}) => {
         carData={listing as any}
         currentUser={currentUser as any}
       />
+      {/* OTHER SECTION */}
+        <div className="container py-12 lg:py-18">
+              <SectionSliderNewCategories
+               propertyData={propertyData}
+               carData={carData}
+                categoryCardType="card5"
+                itemPerRow={5}
+                heading="Properties to explore"
+                subHeading="Popular properties that Kingsland City recommends for you"
+                sliderStyle="style2"
+              />
+        </div>
     </>
   );
 }

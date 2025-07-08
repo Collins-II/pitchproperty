@@ -34,6 +34,7 @@ import getPremiumListings from "@/app/actions/getListings";
 import FeaturesTab from "@/components/FeaturesTab";
 import { featuresTabData } from "@/components/FeaturesTab/featuresTabData";
 import AuthorSlider from "@/components/AuthorSlider";
+import { getCarLocations, getPropertiesGroupedByDistrict } from "@/app/actions/getLocations";
 
 const DEMO_CATS_2: TaxonomyType[] = [
   {
@@ -103,7 +104,8 @@ const DEMO_CATS_2: TaxonomyType[] = [
 
 async function PageHome2() {  
   const dataList = await getPremiumListings();
-  console.log("P__Prop",dataList)
+  const propertyData = await getPropertiesGroupedByDistrict();
+  const carData = await getCarLocations();
 
   return (
     <main className="nc-PageHome2 relative overflow-hidden">
@@ -115,6 +117,8 @@ async function PageHome2() {
           subHeading="Explore houses based on 10 types of stays"
           categoryCardType="card5"
           itemPerRow={5}
+          propertyData={propertyData}
+          carData={carData}
         />
 
        {/* <div className="ncSectionLogos grid grid-cols-3 lg:grid-cols-5 gap-5 sm:gap-16">

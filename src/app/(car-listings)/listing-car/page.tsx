@@ -24,12 +24,14 @@ import { getCarPremium } from "@/app/actions/getCarPremiums";
 import SectionSliderNewCategories from "@/components/SectionSliderNewCategories";
 import SectionHeroArchivePage from "@/app/(server-components)/SectionHeroArchivePage";
 import AuthorSlider from "@/components/AuthorSlider";
+import { getCarLocations, getPropertiesGroupedByDistrict } from "@/app/actions/getLocations";
 
 export interface ListingCarPageProps {}
 
 const ListingCarPage: FC<ListingCarPageProps> = async () => {
   const data = await getCarPremium();
-   console.log("P__Prop",data)
+  const propertyData = await getPropertiesGroupedByDistrict();
+  const carData = await getCarLocations();
 
   return (
     <div className="container space-y-8 mb-8 lg:space-y-12 lg:mb-12">
@@ -51,6 +53,8 @@ const ListingCarPage: FC<ListingCarPageProps> = async () => {
           subHeading="Explore houses based on 10 types of stays"
           categoryCardType="card5"
           itemPerRow={5}
+          propertyData={propertyData}
+          carData={carData}
         />
       
       <div className="relative py-16">

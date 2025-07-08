@@ -12,6 +12,9 @@ import { CarDataType } from '@/data/types';
 import getCurrentUser from '@/app/actions/getCurrentUser';
 import getListingById from '@/app/actions/getCarListingById';
 import { getPropertyById } from '@/app/actions/getListings';
+import { IProperty } from '@/lib/database/models/property.model';
+import { getCarLocations, getPropertiesGroupedByDistrict } from '@/app/actions/getLocations';
+import SectionSliderNewCategories from '@/components/SectionSliderNewCategories';
 
 export interface IParams {
   params: {
@@ -39,7 +42,8 @@ export interface IParams {
 
 const ListingPage = async ({params}: {params: Promise<{ id: string }>}) => {
   const { id } = await params;
-  //const listing: CarDataType = DEMO_CAR_LISTINGS[0];
+  const propertyData = await getPropertiesGroupedByDistrict();
+  const carData = await getCarLocations();
 
   const listing = await getPropertyById(id);
   const currentUser = await getCurrentUser();
@@ -47,9 +51,21 @@ const ListingPage = async ({params}: {params: Promise<{ id: string }>}) => {
   return (
     <>
       <ClientListingDetails
-        data={listing as any}
+        data={listing as IProperty}
         currentUser={currentUser as any}
       />
+      {/* OTHER SECTION */}
+        <div className="container py-12 lg:py-18">
+          <SectionSliderNewCategories
+                     propertyData={propertyData}
+                     carData={carData}
+                      categoryCardType="card5"
+                      itemPerRow={5}
+                      heading="Properties to explore"
+                      subHeading="Popular properties that Kingsland City recommends for you"
+                      sliderStyle="style2"
+          />
+        </div>
     </>
   );
 }
@@ -58,7 +74,7 @@ const ListingPage = async ({params}: {params: Promise<{ id: string }>}) => {
 export async function generateMetadata({params}: {params: Promise<{ id: string }>}) {
   const { id } = await params;
    // fetch data
- const listing = await getListingById(id);
+ const listing = await getPropertyById(id);
 
   return {
     title: listing?.title,

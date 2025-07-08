@@ -14,8 +14,12 @@ import imgPng5 from "@/images/ests/est_5.jpg";
 import imgPng6 from "@/images/ests/est_6.jpg";
 import imgPng7 from "@/images/ests/est-7.jpg";
 import { TaxonomyType } from "@/data/types";
+import { getCarLocations, getPropertiesGroupedByDistrict } from "../actions/getLocations";
 
-const Layout = ({ children }: { children: ReactNode }) => {
+const Layout = async ({ children }: { children: ReactNode }) => {
+  const propertyData = await getPropertiesGroupedByDistrict();
+  const carData = await getCarLocations();
+
   return (
     <div className={`nc-ListingStayPage relative `}>
       <BgGlassmorphism />
@@ -38,6 +42,8 @@ const Layout = ({ children }: { children: ReactNode }) => {
         heading="Properties to explore"
         subHeading="Popular properties that Kingsland City recommends for you"
         sliderStyle="style2"
+        propertyData={propertyData}
+        carData={carData}
       />
       </div>
 
