@@ -152,7 +152,7 @@ const ImagesSlider: FC<ImagesSliderProps> = ({
     trackMouse: true,
   });
 
-  const renderCard = (item: TaxonomyType) => {
+  /*const renderCard = (item: TaxonomyType) => {
     switch (categoryCardType) {
       case "card3":
         return <CardCategory3 taxonomy={item} />;
@@ -163,7 +163,7 @@ const ImagesSlider: FC<ImagesSliderProps> = ({
       default:
         return <CardCategory3 taxonomy={item} />;
     }
-  };
+  };*/
 
   if (!numberOfItems) return null;
 

@@ -136,7 +136,7 @@ export default function AvatarDropdown({ className = "",}: Props) {
                     </Link>
 
                     <Link
-                      href="/auctions"
+                      href="/auctions/live"
                       className="flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
                       onClick={() => close()}
                     >
@@ -158,7 +158,7 @@ export default function AvatarDropdown({ className = "",}: Props) {
                     </svg>
                    </div>
                     <div className="ml-4">
-                      <p className="text-sm font-medium">{"Auctions"}</p>
+                      <p className="text-sm font-medium">{"Live Auctions"}</p>
                      </div>
                    </Link>
 

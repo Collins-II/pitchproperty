@@ -19,7 +19,7 @@ export default async function AuctionPage({params}: {params: Promise<{ itemId: s
   const bids = await getBidsById(itemId);
 
   if (!auction) {
-    redirect("/auctions");
+    redirect("/auctions/live");
   }
 
   return <AuctionPageClient auction={auction} bidders={bids} />;

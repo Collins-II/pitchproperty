@@ -46,7 +46,7 @@ const CardCategory4: FC<CardCategory4Props> = ({
           {` `}
           {(!listingType || listingType === "car") && "properties"}
           {listingType === "car" && "cars"}
-          {listingType === "properties" && "experiences"}
+          {listingType === "property" && "experiences"}
         </span>
       </div>
     </Link>
